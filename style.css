@@ -12,3 +12,18 @@
  Text Domain:  manoa2018-child
 */
 
+/* style page with anchors */
+.page-template-page-anchors nav#breadcrumbs + .page {
+  display: grid;
+  grid-template-columns: 1;
+  grid-template-rows: 3;
+}
+.page-template-page-anchors nav#breadcrumbs + .page > h1.entry-title {
+  grid-row-start: 1;
+}
+.page-template-page-anchors nav#breadcrumbs + .page .entry-content {
+  grid-row-start: 3;
+}
+.page-template-page-anchors nav#breadcrumbs + .page .anchors {
+  grid-row-start: 2;
+}
