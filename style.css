@@ -36,7 +36,7 @@
   margin: 1rem 0;
 }
 
-@media only screen and (min-width: 761px) and (max-width: 1099px) {
+@media only screen and (min-width: 761px) {
   .anchor-links-container {
     column-count: 2;
     column-gap: 40px;
@@ -46,6 +46,19 @@
   }
   .anchor-links-container.4-col {
     column-count: 3;
+  }
+}
+
+@media only screen and (min-width: 761px) {
+  .page-template-page-academic-group #container {
+    float: right;
+    margin: 0 0 0 -240px;
+  }
+  .page-template-page-academic-group #content {
+    margin: 0 0 0 280px;
+  }
+  .page-template-page-academic-group #primary {
+    float: left;
   }
 }
 
