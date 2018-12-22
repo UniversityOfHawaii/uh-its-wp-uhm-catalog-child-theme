@@ -12,18 +12,87 @@
  Text Domain:  manoa2018-child
 */
 
+/* anchor links page template */
+
+#content .anchors h2 {
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: .5px;
+  margin-bottom: .5rem;
+  text-transform: uppercase;
+}
+
+.anchors {
+  margin: 2rem 0;
+}
+
+.anchor-links-container ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.page-template-page-anchors .entry-content address {
+  margin: 1rem 0;
+}
+
+@media only screen and (min-width: 761px) and (max-width: 1099px) {
+  .anchor-links-container {
+    column-count: 2;
+    column-gap: 40px;
+  }
+  .anchor-links-container.3-col {
+    column-count: 3;
+  }
+  .anchor-links-container.4-col {
+    column-count: 3;
+  }
+}
+
+.header-banner {
+  background-size: cover;
+  margin-bottom: 10px;
+  padding: 10px 0;
+  position: relative;
+  z-index: 2;
+}
+.header-banner::after {
+  background-color: #024731;
+  content: '';
+  display: block;
+  height: 100%;
+  opacity: .8;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 90;
+}
+.header-banner .container {
+  position: relative;
+  z-index: 92;
+}
+.header-banner nav#breadcrumbs li,
+.header-banner nav#breadcrumbs li a,
+.header-banner nav#breadcrumbs
+{
+  color: #fff;
+}
+.header-banner h1.entry-title {
+  color: #fff;
+}
+
 /* style page with anchors */
-.page-template-page-anchors nav#breadcrumbs + .page {
+.page-template-page-anchors .page {
   display: grid;
   grid-template-columns: 1;
   grid-template-rows: 3;
 }
-.page-template-page-anchors nav#breadcrumbs + .page > h1.entry-title {
+.page-template-page-anchors .page > h1.entry-title {
   grid-row-start: 1;
 }
-.page-template-page-anchors nav#breadcrumbs + .page .entry-content {
+.page-template-page-anchors .page .entry-content {
   grid-row-start: 3;
 }
-.page-template-page-anchors nav#breadcrumbs + .page .anchors {
+.page-template-page-anchors .page .anchors {
   grid-row-start: 2;
 }

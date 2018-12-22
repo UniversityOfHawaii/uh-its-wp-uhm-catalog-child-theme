@@ -18,17 +18,24 @@ if ( have_posts() ) {
     the_post();
   ?>
 
-    <div id="container">
-      <div id="content" role="main">
+    <div class="header-banner" style="background: url(<?php header_image(); ?>)">
+      <div class="container">
+        <!--<img src="<?php //header_image(); ?>" height="<?php //echo get_custom_header()->height; ?>" width="<?php //echo get_custom_header()->width; ?>" alt="" />-->
 
         <?php manoa2018_get_breadcrumbs(); ?>
 
+        <?php if ( is_front_page() ) { ?>
+          <h2 class="entry-title"><?php the_title(); ?></h2>
+        <?php } else { ?>
+          <h1 class="entry-title"><?php the_title(); ?></h1>
+        <?php } ?>
+      </div>
+    </div>
+
+    <div id="container">
+      <div id="content" role="main">
+
         <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-          <?php if ( is_front_page() ) { ?>
-            <h2 class="entry-title"><?php the_title(); ?></h2>
-          <?php } else { ?>
-            <h1 class="entry-title"><?php the_title(); ?></h1>
-          <?php } ?>
 
           <div class="entry-content">
             <?php the_content(); ?>

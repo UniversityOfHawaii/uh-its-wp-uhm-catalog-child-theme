@@ -209,4 +209,16 @@ function add_category_set_post_types( $query ){
 }
 add_action( 'pre_get_posts', 'add_category_set_post_types' );
 
+// add section to customizer
+function uhm_catalog_customize_register( $wp_customize ) {
+
+    $wp_customize->add_section( 'header_image' , array(
+        'title'      => __( 'Header Background Image', 'mytheme' ),
+    ) );
+
+}
+add_action( 'customize_register', 'uhm_catalog_customize_register' );
+
+add_theme_support( 'custom-header' );
+
 ?>

@@ -1,13 +1,6 @@
 <?php
 /**
- * The loop that displays a single post
- *
- * The loop displays the posts and the post content. See
- * https://codex.wordpress.org/The_Loop to understand it and
- * https://codex.wordpress.org/Template_Tags to understand
- * the tags used in it.
- *
- * This can be overridden in child themes with loop-single.php.
+ * The loop that displays a single course
  *
  */
 ?>
@@ -22,7 +15,23 @@ if ( have_posts() ) {
       <h1 class="entry-title"><?php the_title(); ?></h1>
 
       <div class="entry-meta">
-        <?php manoa2018_categories(); ?>
+        <?php manoa2018_categories();
+          $terms = get_terms(
+              array(
+                  'taxonomy'   => 'your-taxonomy',
+                  'hide_empty' => false,
+              )
+          );
+
+          // Check if any term exists
+          if ( ! empty( $terms ) && is_array( $terms ) ) {
+              // Run a loop and print them all
+              foreach ( $terms as $term ) { ?>
+                  <a href="<?php echo esc_url( get_term_link( $term ) ) ?>">
+                      <?php echo $term->name; ?>
+                  </a><?php
+              }
+          } ?>
       </div><!-- .entry-meta -->
 
       <div class="entry-content">
