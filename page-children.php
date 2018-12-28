@@ -1,14 +1,14 @@
 <?php
 /**
-Template Name: Academic Group
+ * Template Name: Child Pages Index
  *
- * A custom page template for pages with the sidebar on the left.
+ * A custom page template for Colleges, Schools & Academic Units template.
  *
  */
 
 get_header(); ?>
 
-  <main id="main_area" class="left-sidebar">
+  <main id="main_area">
     <div id="main_content">
 
       <?php
@@ -17,8 +17,7 @@ get_header(); ?>
        * If you want to overload this in a child theme then include a file
        * called loop-page.php and that will be used instead.
        */
-      get_template_part( 'loop', 'academic-group' );
+      get_template_part( 'loop', 'children' );
       ?>
 
-<?php get_sidebar(); ?>
 <?php get_footer(); ?>

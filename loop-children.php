@@ -18,23 +18,29 @@ if ( have_posts() ) {
     the_post();
   ?>
 
-    <div class="header-banner" style="background: url(<?php header_image(); ?>)">
-      <div class="container">
-        <!--<img src="<?php //header_image(); ?>" height="<?php //echo get_custom_header()->height; ?>" width="<?php //echo get_custom_header()->width; ?>" alt="" />-->
-
+    <div id="container">
+      <div id="content" role="main">
         <?php manoa2018_get_breadcrumbs(); ?>
 
         <h1 class="entry-title"><?php the_title(); ?></h1>
-      </div>
-    </div>
-
-    <div id="container">
-      <div id="content" role="main">
 
         <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
           <div class="entry-content">
             <?php the_content(); ?>
+
+            <?php
+              if($post->post_parent)
+              $children = wp_list_pages('title_li=&child_of='.$post->post_parent.'&echo=0'); else
+              $children = wp_list_pages('title_li=&child_of='.$post->ID.'&echo=0');
+              if ($children) { ?>
+
+              <ul class="child-pages">
+                  <?php echo $children; ?>
+              </ul>
+
+            <?php } ?>
+
             <?php
             wp_link_pages(
               array(
@@ -46,12 +52,6 @@ if ( have_posts() ) {
 
             <?php edit_post_link( __( 'Edit', 'manoa2018' ), '<span class="edit-link">', '</span>' ); ?>
           </div><!-- .entry-content -->
-
-          <div class="anchors" aria-hidden="true">
-            <!--<h2>Sections</h2>-->
-            <?php global $mwm_aal;
-            echo $mwm_aal->output_content_links(); ?>
-          </div>
 
         </div><!-- #post-## -->
 

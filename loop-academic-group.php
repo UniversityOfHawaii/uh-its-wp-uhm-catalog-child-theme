@@ -24,24 +24,39 @@ if ( have_posts() ) {
         <?php manoa2018_get_breadcrumbs(); ?>
 
         <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-          <?php if ( is_front_page() ) { ?>
-            <h2 class="entry-title"><?php the_title(); ?></h2>
-          <?php } else { ?>
-            <h1 class="entry-title"><?php the_title(); ?></h1>
-          <?php } ?>
 
-          <div class="entry-content">
-            <?php the_content(); ?>
+         <h1 class="parent-title">
             <?php
-            wp_link_pages(
-              array(
-                'before' => '<div class="page-link">' . __( 'Pages:', 'manoa2018' ),
-                'after'  => '</div>',
-              )
-            );
+            global $post;
+            $direct_parent = $post->post_parent;
             ?>
-            <?php edit_post_link( __( 'Edit', 'manoa2018' ), '<span class="edit-link">', '</span>' ); ?>
-          </div><!-- .entry-content -->
+
+            <?php echo get_the_title($direct_parent); ?>
+          </h1>
+          <h1 class="entry-title"><?php the_title(); ?></h1>
+
+          <div class="entry-content-container">
+            <div class="entry-content">
+
+              <?php the_content(); ?>
+
+              <?php
+              wp_link_pages(
+                array(
+                  'before' => '<div class="page-link">' . __( 'Pages:', 'manoa2018' ),
+                  'after'  => '</div>',
+                )
+              );
+              ?>
+              <?php edit_post_link( __( 'Edit', 'manoa2018' ), '<span class="edit-link">', '</span>' ); ?>
+            </div><!-- .entry-content -->
+
+            <div class="anchors" aria-hidden="true">
+              <!--<h2>Sections</h2>-->
+              <?php global $mwm_aal;
+              echo $mwm_aal->output_content_links(); ?>
+            </div>
+          </div>
         </div><!-- #post-## -->
 
         <?php //comments_template( '', true ); ?>

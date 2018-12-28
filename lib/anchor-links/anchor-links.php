@@ -33,7 +33,7 @@ class mwm_aal {
 	}
 
 	function find_content_name_links($content){
-		$pattern='#<h([1-2])(?: [^>]+)?>(.+?)</h\1>#is';
+		$pattern='#<h([1-])(?: [^>]+)?>(.+?)</h\1>#is';
 		preg_match_all($pattern,$content, $matches, PREG_SET_ORDER);
 		$this->links = $matches;
 
@@ -70,7 +70,7 @@ class mwm_aal {
 		$info = "";
 
 		if(count($this->links) >= 1){
-			$info = '<div class="anchor-links-container">';
+			$info = '<div class="anchor-links-container"><ul>';
 			foreach ($this->links as $val) {
 					if(empty($minule)) {
 						$minule = $val[1];
@@ -78,13 +78,13 @@ class mwm_aal {
 						$ind = --$prvni;
 					}else{$ind = $val[1]-$minule;}
 					while ($ind > 0) {$info .='<ul>'; $ind-- ;}
-					while ($ind < 0) {$info .='</ul>'; $ind++ ;}
+					while ($ind < 0) {$info .='</ul></li>'; $ind++ ;}
 					$minule = $val[1];
 				$urlval = urlencode($this->toAscii(strip_tags($val[2])));
-				$info.='<li><a href="#'.$urlval.'">'.strip_tags($val[2]).'</a></li>';
+				$info.='<li><a href="#'.$urlval.'">'.strip_tags($val[2]).'</a>';
 			}
-			while ($ind < 0) {$info .='</ul>'; $ind++ ;}
-		$info .= '</div>';
+			while ($ind < 0) {$info .='</li>'; $ind++ ;}
+		$info .= '</ul></div>';
 		}
 		return $info;
 	}
