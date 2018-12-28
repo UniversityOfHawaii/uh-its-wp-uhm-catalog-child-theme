@@ -23,10 +23,12 @@ add_action( 'wp_enqueue_scripts', 'uhm_catalog_enqueue_styles' );
 /*
  * add anchor links
  */
-function uhm_catalog_setup() {
-  require_once( get_stylesheet_directory() . '/lib/anchor-links/anchor-links.php' );
+function uhm_catalog_enqueue_scripts() {
+  if( is_page_template('page-anchors.php') || is_page_template('page-academic-group.php') ){
+    include( get_stylesheet_directory() . '/lib/anchor-links/anchor-links.php' );
+  }
 }
-add_action( 'after_setup_theme', 'uhm_catalog_setup' );
+add_action( 'wp_enqueue_scripts', 'uhm_catalog_enqueue_scripts' );
 
 /*
  * remove featured thumbnail support
@@ -220,5 +222,12 @@ function uhm_catalog_customize_register( $wp_customize ) {
 add_action( 'customize_register', 'uhm_catalog_customize_register' );
 
 add_theme_support( 'custom-header' );
+
+
+// Add categories & tags to pages
+function uhm_catalog_page_categories() {
+    register_taxonomy_for_object_type('category', 'page');
+}
+add_action( 'init', 'uhm_catalog_page_categories' );
 
 ?>
