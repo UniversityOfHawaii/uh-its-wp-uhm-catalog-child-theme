@@ -20,8 +20,6 @@
       echo '</ul>';
     } ?>
 
-    <?php //global $mwm_aal; echo $mwm_aal->output_content_links(); ?>
-
     <ul class="xoxo">
 
 <?php

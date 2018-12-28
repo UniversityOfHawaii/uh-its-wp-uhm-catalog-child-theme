@@ -15,7 +15,7 @@
 /* anchor links page template */
 
 #content .anchors h2 {
-  font-size: 1rem;
+  font-size: 1rem !important;
   font-weight: 800;
   letter-spacing: .5px;
   margin-bottom: .5rem;
@@ -30,6 +30,11 @@
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+#content .anchors .anchor-links-container > ul > li > ul {
+  margin-top: 8px;
+  padding-left: 10px;
 }
 
 .page-template-page-anchors .entry-content address {
@@ -108,4 +113,38 @@
 }
 .page-template-page-anchors .page .anchors {
   grid-row-start: 2;
+}
+
+.page-template-page-academic-group .entry-content-container {
+  display: grid;
+  grid-template-columns: 1;
+  grid-template-rows: 2;
+}
+
+.page-template-page-academic-group .entry-content-container .entry-content {
+  grid-row-start: 2;
+}
+
+.page-template-page-academic-group .entry-content-container .anchors {
+  grid-row-start: 1;
+  margin: .5em 0 0;
+}
+
+/* style academic group page titles */
+.page-template-page-academic-group #content h1.parent-title {
+  border-bottom: 1px solid #e7e7e7;
+  font-size: 2em;
+  font-weight: 700;
+  margin: 1em 0;
+  padding-bottom: .75em;
+}
+#content h1.parent-title + h1.entry-title {
+  font-size: 1.75em;
+  margin-top: 0;
+}
+.page-template-page-academic-group #content h1 {
+  font-size: 1.55em;
+}
+.page-template-page-academic-group #content h2 {
+  font-size: 22px;
 }
