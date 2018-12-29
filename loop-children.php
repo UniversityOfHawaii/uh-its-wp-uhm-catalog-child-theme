@@ -30,9 +30,7 @@ if ( have_posts() ) {
             <?php the_content(); ?>
 
             <?php
-              if($post->post_parent)
-              $children = wp_list_pages('title_li=&child_of='.$post->post_parent.'&echo=0'); else
-              $children = wp_list_pages('title_li=&child_of='.$post->ID.'&echo=0');
+              $children = wp_list_pages('title_li=&child_of='.$post->ID.'&echo=0&depth=3');
               if ($children) { ?>
 
               <ul class="child-pages">

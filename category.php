@@ -19,7 +19,7 @@ get_header(); ?>
 
           <h1 class="page-title">
               <?php
-                printf( __( 'Category: %s', 'manoa2018' ), '<span>' . single_cat_title( '', false ) . '</span>' );
+                printf( __( '%s', 'manoa2018' ), '<span>' . single_cat_title( '', false ) . '</span>' );
               ?>
           </h1>
           <?php if(category_description()) {

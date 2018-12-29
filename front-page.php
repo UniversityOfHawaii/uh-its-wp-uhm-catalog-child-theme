@@ -19,7 +19,7 @@ get_header(); ?>
             <?php } ?>
         </div>
     <?php endif; ?>
-    <div id="main_content">
+    <div id="main_content" class="bootstrap">
 
       <div id="container">
         <div id="content" role="main">
@@ -29,12 +29,39 @@ get_header(); ?>
               the_post();
             ?>
 
-            <?php the_content(); ?>
+            <?php // the_content(); ?>
 
           <?php endwhile;
           }; // end of the loop. ?>
 
         </div><!-- #content -->
+
+        <?php if ( is_active_sidebar( 'homepage-widget-area' ) ) : ?>
+
+           <ul class="xoxo homepage-widgets">
+           <?php dynamic_sidebar( 'homepage-widget-area' ); ?>
+           </ul>
+
+        <?php endif; // end primary widget area ?>
+
+        <div class="academic-groups">
+          <h2>Colleges, Schools &amp; Academic Units</h2>
+          <?php
+          $pages = wp_list_pages(array(
+              'meta_key' => '_wp_page_template',
+              'meta_value' => 'page-academic-group.php',
+              //'depth' => '-1',
+              'title_li' => '',
+              'child_of' => 'schools-colleges'
+
+          )); ?>
+          <ul>
+            <li>
+              <?php echo $page; ?>
+            </li>
+          </ul>
+        </div>
+
       </div><!-- #container -->
 
 <?php get_footer(); ?>
