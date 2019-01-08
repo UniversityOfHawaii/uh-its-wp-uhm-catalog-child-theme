@@ -152,7 +152,7 @@ function uhm_catalog_create_custom_post_types()
       'rewrite'       => array('slug' => 'courses'),
       'show_in_rest'  => true,
       'taxonomies'    => array('post_tag', 'category', 'academic-groups', 'course-tags' ),
-      'supports'      => array('title', 'editor', 'author', 'revisions','custom-fields','page-attributes'),
+      'supports'      => array('title', 'editor', 'author', 'revisions','custom-fields','page-attributes','excerpt'),
       'menu_icon'     => 'dashicons-book-alt',
     )
   );
@@ -195,7 +195,7 @@ function uhm_catalog_create_custom_post_types()
       'has_archive'   => true,
       'rewrite'       => array('slug' => 'units'),
       'show_in_rest'  => true,
-      'supports'      => array('title', 'editor', 'author', 'revisions','custom-fields','page-attributes'),
+      'supports'      => array('title', 'editor', 'author', 'revisions','custom-fields','page-attributes','excerpt'),
       'taxonomies'    => array('post_tag', 'category' ),
       'menu_icon'     => 'dashicons-welcome-learn-more',
     )
