@@ -33,7 +33,10 @@ while ( have_posts() ) :
       <h2 class="entry-title"><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
 
       <div class="entry-content">
-        <?php the_excerpt(); ?>
+        <?php the_content(); ?>
+        <div class="course-tags">
+          <?php manoa2018_posted_in(); ?>
+        </div>
         <?php
         wp_link_pages(
           array(

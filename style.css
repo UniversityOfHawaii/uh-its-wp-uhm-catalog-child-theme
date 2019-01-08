@@ -5,7 +5,7 @@
  Author:       UH ITS
  Author URI:   https://www.hawaii.edu/its/
  Template:     manoa2018
- Version:      1.0.0
+ Version:      1.0.5
  License:      GNU General Public License v2 or later
  License URI:  http://www.gnu.org/licenses/gpl-2.0.html
  Tags:         manoa, catalog
@@ -147,4 +147,42 @@
 }
 .page-template-page-academic-group #content h2 {
   font-size: 22px;
+}
+.page-template-page-academic-group #primary ul.secondary > li.page_item_has_children:not(.current_page_item) {
+  display: none;
+}
+.single #nav-below {
+  border-top: 0;
+}
+
+.course-tags {
+  margin-top: 8px;
+}
+
+.course-tags a {
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.schools-list {
+  margin-bottom: 40px;
+}
+.schools-list ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.schools-list ul > li + li {
+  margin-top: 12px;
+}
+.schools-list a {
+  color: #333;
+  font-weight: 600;
+  text-decoration: none;
+}
+.schools-list a:hover,
+.schools-list a:focus,
+.schools-list a:active {
+  color: #024731;
+  border-bottom: 1px solid #024731;
 }
