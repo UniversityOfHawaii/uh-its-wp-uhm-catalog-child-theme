@@ -47,19 +47,18 @@ get_header(); ?>
         <div class="academic-groups">
           <h2>Colleges, Schools &amp; Academic Units</h2>
           <?php
-          $pages = wp_list_pages(array(
+          $schools = array(
               'meta_key' => '_wp_page_template',
               'meta_value' => 'page-academic-group.php',
-              //'depth' => '-1',
+              'orderby' => 'meta_value',
+              'order' => 'ASC',
+              'echo' => '1',
+              'depth' => '1',
+              'sort_column' => 'menu_order',
               'title_li' => '',
-              'child_of' => 'schools-colleges'
-
-          )); ?>
-          <ul>
-            <li>
-              <?php echo $page; ?>
-            </li>
-          </ul>
+              'menu_class' => 'schools-list'
+          ); ?>
+          <?php wp_page_menu( $schools ); ?>
         </div>
 
       </div><!-- #container -->
