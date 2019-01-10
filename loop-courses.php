@@ -30,7 +30,13 @@ while ( have_posts() ) :
 
   <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
     <div class="post-content">
-      <h2 class="entry-title"><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
+      <div class="entry-title-container">
+        <h2 class="entry-title"><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
+        <div class="dtags">
+          <?php $dtags = get_the_term_list('','diversification-tags','','');
+          echo $dtags; ?>
+        </div>
+      </div>
 
       <div class="entry-content">
         <?php the_content(); ?>
