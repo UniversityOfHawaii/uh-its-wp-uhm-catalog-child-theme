@@ -11,16 +11,22 @@ get_header(); ?>
             <?php the_post_thumbnail( 'full' ); ?>
             <?php $caption = get_post(get_post_thumbnail_id())->post_excerpt;
             if ( $caption) { // search for if the image has caption added on it ?>
-                <div class="featured-caption">
-                    <div class="container">
-                        <?php echo $caption; // displays the image caption ?>
+                <div class="featured-links">
+                  <div class="container">
+                    <div class="left-link">
+                      <a href=""><span>Search for Courses</span>
+                      <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                     </div>
+                    <div class="right-link">
+                      <a href=""><span>View all Diversification Courses</span>
+                      <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                    </div>
+                  </div>
                 </div>
             <?php } ?>
         </div>
     <?php endif; ?>
     <div id="main_content" class="bootstrap">
-
       <div id="container">
         <div id="content" role="main">
 
@@ -29,20 +35,25 @@ get_header(); ?>
               the_post();
             ?>
 
-            <?php // the_content(); ?>
+            <?php //the_content(); ?>
 
           <?php endwhile;
           }; // end of the loop. ?>
 
+          <?php if ( is_active_sidebar( 'homepage-widget-area' ) ) : ?>
+
+             <ul class="xoxo homepage-widgets">
+             <?php dynamic_sidebar( 'homepage-widget-area' ); ?>
+             </ul>
+
+          <?php endif; // end primary widget area ?>
+
         </div><!-- #content -->
+      </div>
+    </div>
 
-        <?php if ( is_active_sidebar( 'homepage-widget-area' ) ) : ?>
-
-           <ul class="xoxo homepage-widgets">
-           <?php dynamic_sidebar( 'homepage-widget-area' ); ?>
-           </ul>
-
-        <?php endif; // end primary widget area ?>
+    <div id="schools-list" class="full-width-section">
+      <div class="container">
 
         <div class="academic-groups">
           <h2>Colleges, Schools &amp; Academic Units</h2>
@@ -60,7 +71,8 @@ get_header(); ?>
           ); ?>
           <?php wp_page_menu( $schools ); ?>
         </div>
+      </div>
 
-      </div><!-- #container -->
+    </div><!-- section -->
 
 <?php get_footer(); ?>
