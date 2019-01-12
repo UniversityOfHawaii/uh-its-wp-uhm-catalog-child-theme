@@ -18,7 +18,7 @@ if ( have_posts() ) {
     the_post();
   ?>
 
-    <div class="header-banner" style="background: url(<?php header_image(); ?>)">
+    <div class="header-banner" style="background-image: url(<?php header_image(); ?>)">
       <div class="container">
         <!--<img src="<?php //header_image(); ?>" height="<?php //echo get_custom_header()->height; ?>" width="<?php //echo get_custom_header()->width; ?>" alt="" />-->
 
