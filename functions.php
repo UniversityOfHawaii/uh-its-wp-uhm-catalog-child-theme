@@ -104,24 +104,24 @@ function create_group_taxonomies() {
 
   register_taxonomy( 'course-tags', '', $args );
 
-  // Add new diversification taxonomy, NOT hierarchical (like tags)
+  // Add new gen ed taxonomy, NOT hierarchical (like tags)
   $labels = array(
-    'name'                       => _x( 'Diversification', 'taxonomy general name', 'textdomain' ),
-    'singular_name'              => _x( 'Diversification', 'taxonomy singular name', 'textdomain' ),
-    'search_items'               => __( 'Search Diversification Tags', 'textdomain' ),
-    'popular_items'              => __( 'Popular Diversification Tags', 'textdomain' ),
-    'all_items'                  => __( 'All Diversification Tags', 'textdomain' ),
+    'name'                       => _x( 'General Education', 'taxonomy general name', 'textdomain' ),
+    'singular_name'              => _x( 'General Education', 'taxonomy singular name', 'textdomain' ),
+    'search_items'               => __( 'Search General Education Tags', 'textdomain' ),
+    'popular_items'              => __( 'Popular General Education Tags', 'textdomain' ),
+    'all_items'                  => __( 'All General Education Tags', 'textdomain' ),
     'parent_item'                => null,
     'parent_item_colon'          => null,
-    'edit_item'                  => __( 'Edit Diversification Tag', 'textdomain' ),
-    'update_item'                => __( 'Update Diversification Tag', 'textdomain' ),
-    'add_new_item'               => __( 'Add New Diversification Tag', 'textdomain' ),
-    'new_item_name'              => __( 'New Diversification Tag', 'textdomain' ),
-    'separate_items_with_commas' => __( 'Separate diversification tags with commas', 'textdomain' ),
-    'add_or_remove_items'        => __( 'Add or remove diversification tags', 'textdomain' ),
-    'choose_from_most_used'      => __( 'Choose from the most used diversification tags', 'textdomain' ),
-    'not_found'                  => __( 'No diversification tags found.', 'textdomain' ),
-    'menu_name'                  => __( 'Diversification Tags', 'textdomain' ),
+    'edit_item'                  => __( 'Edit General Education Tag', 'textdomain' ),
+    'update_item'                => __( 'Update General Education Tag', 'textdomain' ),
+    'add_new_item'               => __( 'Add New General Education Tag', 'textdomain' ),
+    'new_item_name'              => __( 'New General Education Tag', 'textdomain' ),
+    'separate_items_with_commas' => __( 'Separate General Education tags with commas', 'textdomain' ),
+    'add_or_remove_items'        => __( 'Add or remove General Education tags', 'textdomain' ),
+    'choose_from_most_used'      => __( 'Choose from the most used General Education tags', 'textdomain' ),
+    'not_found'                  => __( 'No General Education tags found.', 'textdomain' ),
+    'menu_name'                  => __( 'General Education Tags', 'textdomain' ),
   );
 
   $args = array(
@@ -131,10 +131,10 @@ function create_group_taxonomies() {
     'show_admin_column'     => true,
     'update_count_callback' => '_update_post_term_count',
     'query_var'             => true,
-    'rewrite'               => array( 'slug' => 'diversification-tag' ),
+    'rewrite'               => array( 'slug' => 'gened-tag' ),
   );
 
-  register_taxonomy( 'diversification-tags', '', $args );
+  register_taxonomy( 'gened-tags', '', $args );
 }
 
 /*
@@ -183,7 +183,7 @@ function uhm_catalog_create_custom_post_types()
       'has_archive'   => true,
       'rewrite'       => array('slug' => 'courses'),
       'show_in_rest'  => true,
-      'taxonomies'    => array('post_tag', 'category', 'academic-groups', 'course-tags','diversification-tags' ),
+      'taxonomies'    => array('post_tag', 'category', 'academic-groups', 'course-tags','gened-tags' ),
       'supports'      => array('title', 'editor', 'author', 'revisions','page-attributes'),
       'menu_icon'     => 'dashicons-book-alt',
     )
@@ -201,14 +201,42 @@ add_action( 'pre_get_posts', 'add_category_set_post_types' );
 
 // add section to customizer
 function uhm_catalog_customize_register( $wp_customize ) {
-
     $wp_customize->add_section( 'header_image' , array(
         'title'      => __( 'Header Background Image', 'mytheme' ),
     ) );
-
+    // Add Homepage links
+    $wp_customize->add_section( 'home-links' , array(
+        'title' => __( 'Home Links', 'manoa2018' ),
+        'description' => __( 'Insert the link titles and URL for the homepage. These will appear below the main catalog graphic.', 'manoa2018' )
+    ) );
+    // Add Home links
+    $wp_customize->add_setting( 'home-link-1' , array( 'default' => '' ));
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'home-link-1', array(
+        'label' => __( 'Home Link 1 Text', 'manoa2018' ),
+        'section' => 'home-links',
+        'settings' => 'home-link-1',
+    ) ) );
+    $wp_customize->add_setting( 'home-link-1-url' , array( 'default' => '' ));
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'home-link-1-url', array(
+        'label' => __( 'Home Link 1 URL', 'manoa2018' ),
+        'section' => 'home-links',
+        'settings' => 'home-link-1-url',
+    ) ) );
+    $wp_customize->add_setting( 'home-link-2' , array( 'default' => '' ));
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'home-link-2', array(
+        'label' => __( 'Home Link 2 Text', 'manoa2018' ),
+        'section' => 'home-links',
+        'settings' => 'home-link-2',
+    ) ) );
+    $wp_customize->add_setting( 'home-link-2-url' , array( 'default' => '' ));
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'home-link-2-url', array(
+        'label' => __( 'Home Link 2 URL', 'manoa2018' ),
+        'section' => 'home-links',
+        'settings' => 'home-link-2-url',
+    ) ) );
+    $wp_customize->remove_section( 'colors' );
 }
 add_action( 'customize_register', 'uhm_catalog_customize_register' );
-
 add_theme_support( 'custom-header' );
 
 
@@ -268,6 +296,12 @@ function manoa2018_get_breadcrumbs() {
             echo '<li class="item-posts"><a class="bread-link" href="' . get_permalink( get_page_by_title( 'Courses Overview' ) ) . '">Courses</a></li>';
             echo '<li class="separator"> ' . $separator . ' </li>';
             echo '<li class="item-current item-archive" aria-current="page"><span class="bread-current bread-archive">' . get_the_archive_title() . '</span></li>';
+
+        } elseif ( is_tax() || is_tag() ) {
+
+            echo '<li class="item-posts">Tags</li>';
+            echo '<li class="separator"> ' . $separator . ' </li>';
+            echo '<li class="item-current item-archive" aria-current="page"><span class="bread-current bread-archive">' . single_term_title() . '</span></li>';
 
         } elseif ( is_archive() ) {
 
@@ -334,32 +368,5 @@ function manoa2018_get_breadcrumbs() {
     }
 }
 endif;
-
-// get diversification tags
-function get_diversification_terms($post)
-{
-  //initializing
-  $taxes = get_object_taxonomies($post);
-  $args = array(
-    'orderby'   => 'name',
-    'order'   => 'ASC',
-    'fields'  => 'all'
-  );
-  $taxTerms = array();
-
-  if ($taxes)
-  {
-    foreach ($taxes as $taxName)
-    {
-      if (!isset($taxTerms[$taxName]))
-      {
-        $taxTerms[$taxName] = array();
-      }
-      $taxTerms[$taxName] = wp_get_object_terms( $post->ID, $taxName, $args );
-    }
-  }
-
-  return $taxTerms;
-}
 
 ?>

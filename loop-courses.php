@@ -33,8 +33,8 @@ while ( have_posts() ) :
       <div class="entry-title-container">
         <h2 class="entry-title"><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
         <div class="dtags">
-          <?php $dtags = get_the_term_list('','diversification-tags','','');
-          echo $dtags; ?>
+          <?php $gened_tags = get_the_term_list('','gened-tags','','');
+          echo $gened_tags; ?>
         </div>
       </div>
 

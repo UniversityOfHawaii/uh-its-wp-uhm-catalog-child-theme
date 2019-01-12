@@ -61,8 +61,8 @@ if ( have_posts() ) {
       <?php endif; ?>
 
       <div class="entry-utility">
-        <?php $dtags = get_the_term_list('','diversification-tags','','');
-          echo $dtags; ?>
+        <?php $gened_tags = get_the_term_list('','gened-tags','','');
+          echo $gened_tags; ?>
         <?php manoa2018_posted_in(); ?>
       </div><!-- .entry-utility -->
       <?php edit_post_link( __( 'Edit', 'manoa2018' ), '<span class="edit-link">', '</span>' ); ?>
