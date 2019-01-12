@@ -8,22 +8,23 @@ get_header(); ?>
   <main id="main_area">
     <?php if(has_post_thumbnail()): ?>
         <div class="featured-image">
-            <?php the_post_thumbnail( 'full' ); ?>
-            <?php $caption = get_post(get_post_thumbnail_id())->post_excerpt;
-            if ( $caption) { // search for if the image has caption added on it ?>
-                <div class="featured-links">
-                  <div class="container">
-                    <div class="left-link">
-                      <a href=""><span>Search for Courses</span>
-                      <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
-                    </div>
-                    <div class="right-link">
-                      <a href=""><span>View all Diversification Courses</span>
-                      <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
-                    </div>
-                  </div>
-                </div>
-            <?php } ?>
+          <?php the_post_thumbnail( 'full' ); ?>
+          <div class="featured-links">
+            <div class="container">
+              <div class="left-link">
+                <a href="<?php echo get_theme_mod('home-link-1-url'); ?>" title="go to <?php echo get_theme_mod('home-link-1'); ?>">
+                  <?php echo get_theme_mod('home-link-1'); ?>
+                  <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                </a>
+              </div>
+              <div class="right-link">
+                <a href="<?php echo get_theme_mod('home-link-2-url'); ?>" title="go to <?php echo get_theme_mod('home-link-2'); ?>">
+                  <?php echo get_theme_mod('home-link-2'); ?>
+                  <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
     <?php endif; ?>
     <div id="main_content" class="bootstrap">
