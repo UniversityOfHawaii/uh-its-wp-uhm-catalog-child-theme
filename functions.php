@@ -430,11 +430,11 @@ function custom_posts_where( $where, $query ) {
         $user_where = custom_get_user_posts_where();
 
         $where .= " OR (
-                        {$wpdb->term_taxonomy}.taxonomy IN( 'category', 'post_tag' )
-                        AND
-                        {$wpdb->terms}.name LIKE '%" . esc_sql( get_query_var( 's' ) ) . "%'
-                        {$user_where}
-                    )";
+            {$wpdb->term_taxonomy}.taxonomy IN( 'category', 'post_tag', 'gened-tags' )
+            AND
+            {$wpdb->terms}.name LIKE '%" . esc_sql( get_query_var( 's' ) ) . "%'
+            {$user_where}
+        )";
 
     }
 

@@ -355,12 +355,23 @@ ul.child-pages a:active {
   margin-top: 0;
 }
 
+#content .entry-title-container .dtags {
+  margin-bottom: 1em;
+}
+
+#content .entry-title-container h2.entry-title {
+  margin-top: 0;
+}
+
 @media only screen and (min-width: 761px) {
   .entry-title-container {
     display: flex;
   }
   h2.entry-title {
     /*flex: 1;*/
+  }
+  #content .entry-title-container .dtags {
+    margin-bottom: 0;
   }
   .dtags {
     margin-left: 20px;
@@ -415,6 +426,13 @@ ul.child-pages a:active {
 
 .course-content-container .course-sidebar {
   margin-top: 1.5em;
+}
+
+@media only screen and (min-width: 761px) {
+  .course-directory {
+    column-count: 2;
+    column-gap: 40px;
+  }
 }
 
 @media only screen and (min-width: 761px) {
