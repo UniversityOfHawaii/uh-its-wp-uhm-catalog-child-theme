@@ -30,13 +30,16 @@ if ( have_posts() ) {
             <div class="course-content-container">
               <div class="course-content">
                 <?php the_content(); ?>
+
+                <h1>Search Courses</h1>
+                <?php get_template_part('searchform', 'courses'); ?>
               </div>
               <div class="course-sidebar">
                 <?php
                   $children = wp_list_pages('title_li=&child_of='.$post->ID.'&echo=0&depth=3');
                   if ($children) { ?>
 
-                  <h1>Child Pages</h1>
+                  <h1>More Course Info</h1>
                   <ul class="child-pages">
                       <?php echo $children; ?>
                   </ul>
@@ -45,7 +48,7 @@ if ( have_posts() ) {
               </div>
             </div>
 
-            <h1>Course Listing by Department</h1>
+            <h1>Or Browse Course Listing by Department</h1>
             <?php $categories = get_categories(array(
               'child_of'            => 0,
               'current_category'    => 0,

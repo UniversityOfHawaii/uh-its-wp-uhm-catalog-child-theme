@@ -29,32 +29,38 @@ while ( have_posts() ) :
 ?>
 
   <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-    <?php // featured image
-    if ( has_post_thumbnail() && ! post_password_required() && ! is_attachment() ) : ?>
-      <div class="entry-thumbnail">
-        <?php the_post_thumbnail('thumbnail'); ?>
-      </div>
-    <?php endif; ?>
     <div class="post-content">
-      <h2 class="entry-title"><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
-
-      <?php if(is_singular()): ?>
-        <div class="entry-meta">
-          <?php $dtags = get_the_term_list('','diversification-tags','','');
-          echo $dtags; ?>
-          <?php manoa2018_posted_on(); ?>
-          <?php manoa2018_categories(); ?>
-        </div><!-- .entry-meta -->
-      <?php endif; ?>
+      <div class="entry-title-container">
+        <h2 class="entry-title">
+          <a href="<?php the_permalink(); ?>" rel="bookmark">
+            <?php the_title(); ?>
+            <?php //manoa2018_posted_on(); ?>
+            <?php
+            if(basename(get_page_template()) === 'page-academic-group.php') {
+              foreach (get_the_category() as $category){
+                echo "<span> | ";
+                echo $category->name;
+                echo "</span>";
+              }
+            } ?>
+          </a>
+          <small> <?php echo get_post_type(); ?></small>
+        </h2>
+          <?php $dtags = get_the_term_list('','gened-tags','','');
+          if ($dtags) { ?>
+            <div class="dtags">
+              <?php echo $dtags; ?>
+            </div>
+          <?php } ?>
+      </div>
 
       <div class="entry-content">
         <?php the_excerpt(); ?>
         <div class="entry-meta">
-          <?php $dtags = get_the_term_list('','diversification-tags','','');
-          echo $dtags; ?>
-          <?php //manoa2018_posted_on(); ?>
-          <?php manoa2018_categories(); ?>
-        </div><!-- .entry-meta -->
+          <?php if( 'courses' == get_post_type()) : ?>
+            <?php manoa2018_categories(); ?>
+          <?php endif; ?>
+        </div>
         <?php
         wp_link_pages(
           array(
