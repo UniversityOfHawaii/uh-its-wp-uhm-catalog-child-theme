@@ -70,14 +70,15 @@ if ( have_posts() ) {
                   $children = wp_list_pages('title_li=&child_of='.$post->ID.'&echo=0&depth=3');
                   if ($children) { ?>
 
-                  <h1>Course Info</h1>
+                  <h1>Resources</h1>
                   <ul class="child-pages">
                       <li><a href="http://www.sis.hawaii.edu/uhdad/avail.classes?i=MAN" title="check classes">Check Class Availability</a></li>
                       <li><a href="http://www.outreach.hawaii.edu/" title="check summer classes">Summer Courses through the Outreach College</a></li>
+                      <li><a href="https://www.star.hawaii.edu/" title="log in to star">Star</a></li>
                       <?php echo $children; ?>
                   </ul>
 
-                  <h1>Browse General Education &amp; Diversification Courses</h1>
+                  <h1>Browse General Education Courses</h1>
                   <?php $gened_tags = get_terms(array(
                     'taxonomy'            => 'gened-tags',
                     'hide_empty'    => false,
@@ -86,34 +87,6 @@ if ( have_posts() ) {
                   <div class="dtags">
                     <?php foreach($gened_tags as $gened_tag) {
                        echo '<a href="' . get_category_link($gened_tag->term_id) . '">' . $gened_tag->name . '</a>';
-                    } ?>
-                  </div>
-                  <br />
-                  <h1>Other Tags</h1>
-                  <?php $terms = get_terms(array(
-                    'taxonomy'            => 'course-tags',
-                    'hide_empty'    => false,
-                  ));
-                  ?>
-                  <?php $tags = get_tags();
-                  $count = count( $tags );
-                  $i = 0; ?>
-                  <div class="tags">
-                    <?php foreach($terms as $term) {
-                       $i++;
-                       echo '<a href="' . get_category_link($term->term_id) . '">' . $term->name . '</a>';
-                       if ( $count != $i ) {
-                        echo ', ';
-                      }
-                    } ?>
-                    <?php $count = count( $tags );
-                    $i = 0;
-                    foreach($tags as $tag) {
-                      $i++;
-                       echo '<a href="' . get_category_link($tag->term_id) . '">' . $tag->name . '</a>';
-                      if ( $count != $i ) {
-                        echo ', ';
-                      }
                     } ?>
                   </div>
                 <?php } ?>

@@ -46,63 +46,6 @@ add_action( 'init', 'create_group_taxonomies', 0 );
 
 // create two taxonomies, genres and writers for the post type "book"
 function create_group_taxonomies() {
-  // Add new taxonomy, make it hierarchical (like categories)
-  /*$labels = array(
-    'name'              => _x( 'Academic Groups', 'taxonomy general name', 'textdomain' ),
-    'singular_name'     => _x( 'Academic Group', 'taxonomy singular name', 'textdomain' ),
-    'search_items'      => __( 'Academic Groups', 'textdomain' ),
-    'all_items'         => __( 'All Academic Groups', 'textdomain' ),
-    'parent_item'       => __( 'Parent Academic Group', 'textdomain' ),
-    'parent_item_colon' => __( 'Parent Academic Group:', 'textdomain' ),
-    'edit_item'         => __( 'Edit Academic Group', 'textdomain' ),
-    'update_item'       => __( 'Update Academic Group', 'textdomain' ),
-    'add_new_item'      => __( 'Add New Academic Group', 'textdomain' ),
-    'new_item_name'     => __( 'New Academic Group', 'textdomain' ),
-    'menu_name'         => __( 'Academic Group', 'textdomain' ),
-  );
-
-  $args = array(
-    'hierarchical'      => true,
-    'labels'            => $labels,
-    'show_ui'           => true,
-    'show_admin_column' => true,
-    'query_var'         => true,
-    'rewrite'           => array( 'slug' => 'academic-group' ),
-  );
-
-  register_taxonomy( 'academic-groups', array( '' ), $args );*/
-
-  // Add new course tags taxonomy, NOT hierarchical (like tags)
-  $labels = array(
-    'name'                       => _x( 'Course Tags', 'taxonomy general name', 'textdomain' ),
-    'singular_name'              => _x( 'Course Tag', 'taxonomy singular name', 'textdomain' ),
-    'search_items'               => __( 'Search Course Tags', 'textdomain' ),
-    'popular_items'              => __( 'Popular Course Tags', 'textdomain' ),
-    'all_items'                  => __( 'All Course Tags', 'textdomain' ),
-    'parent_item'                => null,
-    'parent_item_colon'          => null,
-    'edit_item'                  => __( 'Edit Course Tag', 'textdomain' ),
-    'update_item'                => __( 'Update Course Tag', 'textdomain' ),
-    'add_new_item'               => __( 'Add New Course Tag', 'textdomain' ),
-    'new_item_name'              => __( 'New Course Tag', 'textdomain' ),
-    'separate_items_with_commas' => __( 'Separate course tags with commas', 'textdomain' ),
-    'add_or_remove_items'        => __( 'Add or remove course tags', 'textdomain' ),
-    'choose_from_most_used'      => __( 'Choose from the most used course tags', 'textdomain' ),
-    'not_found'                  => __( 'No course tags found.', 'textdomain' ),
-    'menu_name'                  => __( 'Course Tags', 'textdomain' ),
-  );
-
-  $args = array(
-    'hierarchical'          => false,
-    'labels'                => $labels,
-    'show_ui'               => true,
-    'show_admin_column'     => true,
-    'update_count_callback' => '_update_post_term_count',
-    'query_var'             => true,
-    'rewrite'               => array( 'slug' => 'course-tag' ),
-  );
-
-  register_taxonomy( 'course-tags', '', $args );
 
   // Add new gen ed taxonomy, NOT hierarchical (like tags)
   $labels = array(
@@ -183,7 +126,7 @@ function uhm_catalog_create_custom_post_types()
       'has_archive'   => true,
       'rewrite'       => array('slug' => 'courses'),
       'show_in_rest'  => true,
-      'taxonomies'    => array('post_tag', 'category', 'academic-groups', 'course-tags','gened-tags' ),
+      'taxonomies'    => array('category', 'academic-groups','gened-tags' ),
       'supports'      => array('title', 'editor', 'author', 'revisions','page-attributes'),
       'menu_icon'     => 'dashicons-book-alt',
     )
