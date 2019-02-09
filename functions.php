@@ -42,10 +42,10 @@ add_action( 'after_setup_theme', 'uhm_catalog_child_setup', 11 );*/
 
 // REGISTER NEW TAXONOMIES
 // hook into the init action and call create_book_taxonomies when it fires
-add_action( 'init', 'create_group_taxonomies', 0 );
+add_action( 'init', 'create_new_taxonomies', 0 );
 
 // create two taxonomies, genres and writers for the post type "book"
-function create_group_taxonomies() {
+function create_new_taxonomies() {
 
   // Add new gen ed taxonomy, NOT hierarchical (like tags)
   $labels = array(
