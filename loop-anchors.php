@@ -18,16 +18,6 @@ if ( have_posts() ) {
     the_post();
   ?>
 
-    <div class="header-banner" style="background-image: url(<?php header_image(); ?>)">
-      <div class="container">
-        <!--<img src="<?php //header_image(); ?>" height="<?php //echo get_custom_header()->height; ?>" width="<?php //echo get_custom_header()->width; ?>" alt="" />-->
-
-        <?php manoa2018_get_breadcrumbs(); ?>
-
-        <h1 class="entry-title"><?php the_title(); ?></h1>
-      </div>
-    </div>
-
     <div id="container">
       <div id="content" role="main">
 

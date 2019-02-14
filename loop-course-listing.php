@@ -20,9 +20,6 @@ if ( have_posts() ) {
 
     <div id="container">
       <div id="content" role="main">
-        <?php manoa2018_get_breadcrumbs(); ?>
-
-        <h1 class="entry-title"><?php the_title(); ?></h1>
 
         <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
