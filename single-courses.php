@@ -5,12 +5,10 @@
  */
 
 get_header(); ?>
-  <main id="main_area">
+  <main id="main_area" class="one-column">
     <div id="main_content">
       <div id="container">
         <div id="content" role="main">
-
-          <?php manoa2018_get_breadcrumbs(); ?>
 
           <?php
           /*
@@ -24,5 +22,4 @@ get_header(); ?>
         </div><!-- #content -->
       </div><!-- #container -->
 
-<?php get_sidebar(); ?>
 <?php get_footer(); ?>
