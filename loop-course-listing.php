@@ -68,7 +68,7 @@ if ( have_posts() ) {
                   if ($children) { ?>
 
                   <h1>Resources</h1>
-                  <ul class="child-pages">
+                  <ul class="resource-links">
                       <li><a href="http://www.sis.hawaii.edu/uhdad/avail.classes?i=MAN" title="check classes">Check Class Availability</a></li>
                       <li><a href="http://www.outreach.hawaii.edu/" title="check summer classes">Summer Courses through the Outreach College</a></li>
                       <li><a href="https://www.star.hawaii.edu/" title="log in to star">Star</a></li>
