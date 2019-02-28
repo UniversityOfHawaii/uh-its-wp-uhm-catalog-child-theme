@@ -240,7 +240,13 @@ function manoa2018_get_breadcrumbs() {
             echo '<li class="separator"> ' . $separator . ' </li>';
             echo '<li class="item-current item-archive" aria-current="page"><span class="bread-current bread-archive">' . get_the_archive_title() . '</span></li>';
 
-        } elseif ( is_tax() || is_tag() ) {
+        } elseif ( is_tax('gened-tags') ) {
+
+            echo '<li class="item-posts">General Education Courses</li>';
+            echo '<li class="separator"> ' . $separator . ' </li>';
+            echo '<li class="item-current item-archive" aria-current="page"><span class="bread-current bread-archive">' . single_term_title() . '</span></li>';
+
+        } elseif ( is_tag() ) {
 
             echo '<li class="item-posts">Tags</li>';
             echo '<li class="separator"> ' . $separator . ' </li>';
