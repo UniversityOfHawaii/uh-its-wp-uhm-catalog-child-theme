@@ -8,7 +8,7 @@
 
 get_header(); ?>
 
-  <main id="main_area" class="one-column">
+  <main id="main_area" class="left-sidebar">
     <div id="main_content">
 
       <?php
@@ -20,4 +20,5 @@ get_header(); ?>
       get_template_part( 'loop', 'anchors' );
       ?>
 
+<?php get_sidebar(); ?>
 <?php get_footer(); ?>
