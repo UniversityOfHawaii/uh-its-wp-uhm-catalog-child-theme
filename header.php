@@ -98,7 +98,8 @@ if ( ( $paged >= 2 || $page >= 2 ) && ! is_404() ) {
           <div class="site-title"><?php bloginfo( 'name' ); ?></div>
         </h1>
       </a>
-      <?php get_template_part('searchform', 'desktop'); ?>
+      <?php get_search_form(); ?>
+      <?php //get_template_part('searchform', 'desktop'); ?>
     </div>
   </div>
   <nav id="header_btm">
@@ -135,13 +136,29 @@ if ( ( $paged >= 2 || $page >= 2 ) && ! is_404() ) {
         wp_page_menu( $menu ); ?>
 
     <?php endif; ?>
-
-    <?php get_search_form(); ?>
   </nav>
   <div id="department_name" style="background-image: url(<?php header_image(); ?>)">
     <div class="container">
       <?php manoa2018_get_breadcrumbs(); ?>
-      <h1 class="entry-title"><?php the_title(); ?></h1>
+      <h1 class="entry-title">
+        <?php if( is_search() ) { ?>
+          <?php printf( __( 'Search Results for: %s', 'manoa2018' ), '<span>' . get_search_query() . '</span>' ); ?>
+        <?php } elseif( is_archive() ) { ?>
+          <?php echo get_the_archive_title(); ?>
+          <?php //echo single_term_title(); ?>
+        <?php } elseif( is_page_template('page-academic-group.php') ) { ?>
+          <span class="parent-title">
+            <?php
+            global $post;
+            $direct_parent = $post->post_parent;
+            ?>
+            <?php echo get_the_title($direct_parent); ?>:</span> <span class="child-page-title"><?php the_title(); ?></span>
+        <?php } elseif( is_404() ) { ?>
+          Error 404
+        <?php } else { ?>
+          <?php the_title(); ?>
+        <?php } ?>
+      </h1>
     </div>
   </div>
 </header>

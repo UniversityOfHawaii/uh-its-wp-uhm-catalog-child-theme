@@ -16,11 +16,6 @@ get_header(); ?>
         <div id="container">
           <div id="content" role="main">
 
-            <?php manoa2018_get_breadcrumbs(); ?>
-
-            <h1 class="page-title">
-              Courses
-            </h1>
             <?php if(category_description()) {
               echo category_description();
             } ?>

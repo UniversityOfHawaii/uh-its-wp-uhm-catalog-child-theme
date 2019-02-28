@@ -16,13 +16,6 @@ get_header(); ?>
             the_post();
           }
           ?>
-          <?php manoa2018_get_breadcrumbs(); ?>
-
-          <h1 class="page-title">
-              <?php
-                printf( __( '%s', 'manoa2018' ), '<span>' . single_term_title() . '</span>' );
-              ?>
-          </h1>
 
           <?php get_sidebar('courses'); ?>
           <br />

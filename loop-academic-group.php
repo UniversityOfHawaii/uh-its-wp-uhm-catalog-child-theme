@@ -23,16 +23,6 @@ if ( have_posts() ) {
 
         <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-         <h1 class="parent-title">
-            <?php
-            global $post;
-            $direct_parent = $post->post_parent;
-            ?>
-
-            <?php echo get_the_title($direct_parent); ?>
-          </h1>
-          <h1 class="entry-title"><?php the_title(); ?></h1>
-
           <div class="entry-content-container">
             <div class="entry-content">
 
