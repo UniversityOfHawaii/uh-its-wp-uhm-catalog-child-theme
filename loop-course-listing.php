@@ -26,9 +26,10 @@ if ( have_posts() ) {
           <div class="entry-content">
             <div class="course-content-container">
               <div class="course-content">
-                <h1>Search Courses</h1>
-                <?php get_template_part('searchform', 'courses'); ?>
-                <br/>
+                <div class="course-search">
+                  <h1>Search Courses</h1>
+                  <?php get_template_part('searchform', 'courses'); ?>
+                </div>
                 <h1>Or Browse Course Listing by Department</h1>
                 <?php the_content(); ?>
                 <?php $categories = get_categories(array(

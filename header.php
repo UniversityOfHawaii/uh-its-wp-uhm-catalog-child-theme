@@ -35,7 +35,6 @@ if ( ( $paged >= 2 || $page >= 2 ) && ! is_404() ) {
 
     ?></title>
 <link rel="profile" href="http://gmpg.org/xfn/11" />
-<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <!-- get favicon -->
 <link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/images/icon.png" />
