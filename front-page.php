@@ -61,7 +61,7 @@ get_header(); ?>
           <?php
           $schools = array(
               'meta_key' => '_wp_page_template',
-              'meta_value' => 'page-academic-group.php',
+              'meta_value' => 'page-academic-group-main.php',
               'orderby' => 'meta_value',
               'order' => 'ASC',
               'echo' => '1',
