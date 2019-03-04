@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: One Column with Anchor Links
+ * Template Name: Left Sidebar with Anchor Links
  *
  * A custom page template without sidebar.
  *
