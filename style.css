@@ -5,7 +5,7 @@
  Author:       UH ITS
  Author URI:   https://www.hawaii.edu/its/
  Template:     manoa2018
- Version:      1.0.8
+ Version:      1.0.9
  License:      GNU General Public License v2 or later
  License URI:  http://www.gnu.org/licenses/gpl-2.0.html
  Tags:         manoa, catalog
@@ -114,7 +114,7 @@ body header {
   box-sizing: border-box;
   height: auto;
   margin-right: 20px;
-  width: 80px;
+  width: 60px;
 }
 
 .site-name-description h1 > div {
@@ -124,7 +124,7 @@ body header {
 }
 
 .site-name-description h1 > .uhm-title {
-  font-size: .8em;
+  font-size: .7em;
   position: relative;
   white-space: nowrap;
 }
@@ -135,7 +135,7 @@ body header {
 }
 
 .site-name-description h1 > .site-title {
-  font-size: .9em;
+  font-size: .8em;
   font-weight: 400;
 }
 
@@ -233,10 +233,18 @@ nav#breadcrumbs
   grid-row-start: 2;
 }
 
+.page-template-page-academic-group .anchors {
+  padding-top: 20px;
+}
+
 .page-template-page-academic-group .entry-content-container {
   display: grid;
   grid-template-columns: 1;
   grid-template-rows: 2;
+}
+
+.page-template-page-academic-group .entry-content-container .entry-content {
+  padding-top: 0;
 }
 
 .page-template-page-academic-group .entry-content-container .entry-content {
@@ -287,6 +295,14 @@ nav#breadcrumbs
 
 .home #footer_top_content {
   border-top: 0;
+}
+
+#content ul.homepage-widgets li + li {
+  margin-top: 0;
+}
+
+ul.homepage-widgets li {
+  margin-bottom: 20px;
 }
 
 #schools-list {
@@ -416,6 +432,17 @@ ul.child-pages a:active {
   text-decoration: none;
   width: 100%;
 }
+
+@media only screen and (max-width: 760px) {
+  .home .featured-image .featured-links .container > div > a {
+    padding-bottom: 20px;
+    padding-top: 20px;
+  }
+  .home .featured-image .featured-links .container > .right-link {
+    border-top: 1px solid #fff;
+  }
+}
+
 .home .featured-image .featured-links .container > div > a:hover,
 .home .featured-image .featured-links .container > div > a:focus,
 .home .featured-image .featured-links .container > div > a:active {
