@@ -20,12 +20,15 @@
       echo '</ul>';
     } ?>
 
-    <ul class="xoxo">
+    <?php if( ! ( is_page_template('page-academic-group-main.php') || is_page_template('page-academic-group.php') ) ) : ?>
+      <ul class="xoxo">
+        <?php
+        if ( ! dynamic_sidebar( 'primary-widget-area' ) ) :
+          ?>
 
-<?php
-if ( ! dynamic_sidebar( 'primary-widget-area' ) ) :
-  ?>
+        <?php endif; // end primary widget area ?>
+      </ul>
+    <?php else : ?>
 
-  <?php endif; // end primary widget area ?>
-    </ul>
+    <?php endif; ?>
   </div><!-- #primary .widget-area -->
