@@ -30,7 +30,6 @@ if ( have_posts() ) {
                   <h1>Search Courses</h1>
                   <?php get_template_part('searchform', 'courses'); ?>
                 </div>
-                <h1>Or Browse Course Listing by Department</h1>
                 <?php the_content(); ?>
                 <?php $categories = get_categories(array(
                   'child_of'            => 0,
@@ -64,30 +63,37 @@ if ( have_posts() ) {
                 </ul>
               </div>
               <div class="course-sidebar">
-                <?php
+                <h1>Resources</h1>
+                <ul class="resource-links">
+                  <?php if ( has_nav_menu( 'primary' ) ) : ?>
+                    <?php wp_nav_menu(
+                      array(
+                        'theme_location'  => 'courses-sidebar',
+                        'container'       => false,
+                        'container_id'    => false,
+                        'depth'           => 1,
+                        'items_wrap'      => '%3$s',
+                      )
+                    ); ?>
+                  <?php endif; ?>
+                  <?php
                   $children = wp_list_pages('title_li=&child_of='.$post->ID.'&echo=0&depth=3');
                   if ($children) { ?>
-
-                  <h1>Resources</h1>
-                  <ul class="resource-links">
-                      <li><a href="http://www.sis.hawaii.edu/uhdad/avail.classes?i=MAN" title="check classes">Check Class Availability</a></li>
-                      <li><a href="http://www.outreach.hawaii.edu/" title="check summer classes">Summer Courses through the Outreach College</a></li>
-                      <li><a href="https://www.star.hawaii.edu/" title="log in to star">Star</a></li>
                       <?php echo $children; ?>
-                  </ul>
+                  <?php } ?>
+                </ul>
 
-                  <h1>Browse General Education Courses</h1>
-                  <?php $gened_tags = get_terms(array(
-                    'taxonomy'            => 'gened-tags',
-                    'hide_empty'    => false,
-                  ));
-                  ?>
-                  <div class="dtags">
-                    <?php foreach($gened_tags as $gened_tag) {
-                       echo '<a href="' . get_category_link($gened_tag->term_id) . '">' . $gened_tag->name . '</a>';
-                    } ?>
-                  </div>
-                <?php } ?>
+                <h1>Browse General Education Courses</h1>
+                <?php $gened_tags = get_terms(array(
+                  'taxonomy'            => 'gened-tags',
+                  'hide_empty'    => false,
+                ));
+                ?>
+                <div class="dtags">
+                  <?php foreach($gened_tags as $gened_tag) {
+                     echo '<a href="' . get_category_link($gened_tag->term_id) . '">' . $gened_tag->name . '</a>';
+                  } ?>
+                </div>
               </div>
             </div>
 

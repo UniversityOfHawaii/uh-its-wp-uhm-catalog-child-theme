@@ -33,12 +33,17 @@ add_action( 'wp_enqueue_scripts', 'uhm_catalog_enqueue_scripts' );
 /*
  * remove featured thumbnail support
  */
-/*function uhm_catalog_child_setup()
+function uhm_catalog_child_setup()
 {
     remove_theme_support( 'post-thumbnails' );
+    // This theme uses wp_nav_menu() in one location.
+    register_nav_menus(
+        array(
+            'courses-sidebar' => __( 'Courses Sidebar', 'uhm_catalog' )
+        )
+    );
 }
-
-add_action( 'after_setup_theme', 'uhm_catalog_child_setup', 11 );*/
+add_action( 'after_setup_theme', 'uhm_catalog_child_setup', 11 );
 
 // REGISTER NEW TAXONOMIES
 // hook into the init action and call create_book_taxonomies when it fires
@@ -145,43 +150,60 @@ add_action( 'pre_get_posts', 'add_category_set_post_types' );
 // add section to customizer
 function uhm_catalog_customize_register( $wp_customize ) {
     $wp_customize->add_section( 'header_image' , array(
-        'title'      => __( 'Header Background Image', 'mytheme' ),
+        'title'      => __( 'Header Background Image', 'uhm_catalog' ),
     ) );
     // Add Homepage links
     $wp_customize->add_section( 'home-links' , array(
-        'title' => __( 'Home Links', 'manoa2018' ),
-        'description' => __( 'Insert the link titles and URL for the homepage. These will appear below the main catalog graphic.', 'manoa2018' )
+        'title' => __( 'Home Links', 'uhm_catalog' ),
+        'description' => __( 'Insert the link titles and URL for the homepage. These will appear below the main catalog graphic.', 'uhm_catalog' )
+    ) );
+    // Add homepage banner image upload
+    $wp_customize->add_setting('home_banner', array(
+        'default' => '',
+        'type' => 'theme_mod',
+        'capability' => 'edit_theme_options',
+    ) );
+    $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'home_banner', array(
+        'label' => __( 'Homepage Banner', 'uhm_catalog' ),
+        'section' => 'home-links',
+        'settings' => 'home_banner', )
     ) );
     // Add Home links
     $wp_customize->add_setting( 'home-link-1' , array( 'default' => '' ));
     $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'home-link-1', array(
-        'label' => __( 'Home Link 1 Text', 'manoa2018' ),
+        'label' => __( 'Home Link 1 Text', 'uhm_catalog' ),
         'section' => 'home-links',
         'settings' => 'home-link-1',
     ) ) );
     $wp_customize->add_setting( 'home-link-1-url' , array( 'default' => '' ));
     $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'home-link-1-url', array(
-        'label' => __( 'Home Link 1 URL', 'manoa2018' ),
+        'label' => __( 'Home Link 1 URL', 'uhm_catalog' ),
         'section' => 'home-links',
         'settings' => 'home-link-1-url',
     ) ) );
     $wp_customize->add_setting( 'home-link-2' , array( 'default' => '' ));
     $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'home-link-2', array(
-        'label' => __( 'Home Link 2 Text', 'manoa2018' ),
+        'label' => __( 'Home Link 2 Text', 'uhm_catalog' ),
         'section' => 'home-links',
         'settings' => 'home-link-2',
     ) ) );
     $wp_customize->add_setting( 'home-link-2-url' , array( 'default' => '' ));
     $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'home-link-2-url', array(
-        'label' => __( 'Home Link 2 URL', 'manoa2018' ),
+        'label' => __( 'Home Link 2 URL', 'uhm_catalog' ),
         'section' => 'home-links',
         'settings' => 'home-link-2-url',
     ) ) );
-    $wp_customize->remove_section( 'colors' );
 }
-add_action( 'customize_register', 'uhm_catalog_customize_register' );
+add_action( 'customize_register', 'uhm_catalog_customize_register', 10 );
 add_theme_support( 'custom-header' );
 
+function my_customize_register() {
+global $wp_customize;
+    $wp_customize->remove_section( 'colors' );
+    $wp_customize->remove_setting( 'display_home_widget' );
+    $wp_customize->remove_control( 'display_home_widget' );
+}
+add_action( 'customize_register', 'my_customize_register', 11 );
 
 // Add categories to pages
 function uhm_catalog_page_categories() {

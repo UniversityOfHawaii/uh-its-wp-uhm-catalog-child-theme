@@ -8,7 +8,9 @@ get_header(); ?>
   <main id="main_area">
     <?php if(has_post_thumbnail()): ?>
         <div class="featured-image">
-          <?php the_post_thumbnail( 'full' ); ?>
+          <?php if (get_theme_mod('home_banner') !='') : ?>
+            <img src="<?php echo get_theme_mod('home_banner'); ?>" alt="UH students">
+          <?php endif; ?>
           <div class="featured-links">
             <div class="container">
               <div class="left-link">
