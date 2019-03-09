@@ -142,10 +142,13 @@ if ( ( $paged >= 2 || $page >= 2 ) && ! is_404() ) {
       <?php manoa2018_get_breadcrumbs(); ?>
       <h1 class="entry-title">
         <?php if ( is_post_type_archive('courses') ) { ?>
-          <?php printf( __( 'Search Courses for: %s', 'manoa2018' ), '<span>' . get_search_query() . '</span>' ); ?>
+          <?php if(get_search_query()) {
+            printf( __( 'Course Search Results for: %s', 'manoa2018' ), '<span>' . get_search_query() . '</span>' ); ?>
+          <?php } else { ?>
+            Search Courses
+          <?php } ?>
         <?php } elseif( is_search() ) { ?>
           <?php printf( __( 'Search Results for: %s', 'manoa2018' ), '<span>' . get_search_query() . '</span>' ); ?>
-
         <?php } elseif( is_archive() ) { ?>
           <?php echo get_the_archive_title(); ?>
           <?php //echo single_term_title(); ?>
@@ -162,6 +165,12 @@ if ( ( $paged >= 2 || $page >= 2 ) && ! is_404() ) {
           <?php the_title(); ?>
         <?php } ?>
       </h1>
+      <?php if ( is_post_type_archive('courses') ) { ?>
+        <?php get_template_part('searchform', 'courses'); ?>
+      <?php } ?>
+      <?php if( is_search() ) { ?>
+        <a class="search-courses-link" href="<?php echo get_home_url(); ?>/courses">Search courses only</a>
+      <?php } ?>
     </div>
   </div>
 </header>

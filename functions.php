@@ -250,7 +250,9 @@ function manoa2018_get_breadcrumbs() {
 
         } elseif ( is_tax('gened-tags') ) {
 
-            echo '<li class="item-posts">General Education Courses</li>';
+            echo '<li class="item-posts"><a href="'. get_permalink( get_page_by_path('courses-overview') ) .'>Courses Overview</a></li>';
+            echo '<li class="separator"> ' . $separator . ' </li>';
+            echo '<li class="item-posts"><a href="'. get_permalink( get_page_by_path('general-education') ) .'>General Education Courses</a></li>';
             echo '<li class="separator"> ' . $separator . ' </li>';
             echo '<li class="item-current item-archive" aria-current="page"><span class="bread-current bread-archive">' . single_term_title() . '</span></li>';
 
@@ -262,13 +264,24 @@ function manoa2018_get_breadcrumbs() {
 
         } elseif ( is_post_type_archive('courses') ) {
 
-            echo '<li class="item-current item-archive" aria-current="page"><span class="bread-current bread-archive">Course Search Results</span></li>';
+            echo '<li class="item-current item-archive" aria-current="page"><span class="bread-current bread-archive">Course Search</span></li>';
 
         } elseif ( is_archive() ) {
 
             echo '<li class="item-current item-archive" aria-current="page"><span class="bread-current bread-archive">' . get_the_archive_title() . '</span></li>';
 
-        } else if ( is_single() ) {
+        } elseif ( is_singular('courses') ) {
+
+            $posts_page = get_option( 'page_for_posts', true );
+            $our_title = get_the_title( $posts_page );
+            $posts_url = get_permalink( $posts_page );
+            $posts_type = get_post_type_object(get_post_type());
+
+            echo '<li class="item-posts"><a href="'. get_home_url() .'/courses">' . esc_html($posts_type->label) . '</a></li>';
+            echo '<li class="separator"> ' . $separator . ' </li>';
+            echo '<li class="item-current item-post" aria-current="page"><span class="bread-current bread-post">' . get_the_title() . '</span></li>';
+
+        } elseif ( is_single() ) {
 
             $posts_page = get_option( 'page_for_posts', true );
             $our_title = get_the_title( $posts_page );
@@ -280,7 +293,7 @@ function manoa2018_get_breadcrumbs() {
             echo '<li class="separator"> ' . $separator . ' </li>';
             echo '<li class="item-current item-post" aria-current="page"><span class="bread-current bread-post">' . get_the_title() . '</span></li>';
 
-        } else if ( is_page() ) {
+        } elseif ( is_page() ) {
 
             // Standard page
             if( $post->post_parent ){
@@ -455,6 +468,15 @@ function custom_posts_groupby( $groupby, $query ) {
     return $groupby;
 }
 
+// add courses to category archive pages
+function add_category_set_post_types( $query ){
+    if( ($query->is_category() | $query->is_tag()) && $query->is_main_query() ){
+        $query->set( 'post_type', 'courses' );
+    }
+}
+add_action( 'pre_get_posts', 'add_category_set_post_types' );
+
+
 // set archive-courses as template for courses search results
 function template_chooser($template)
 {
@@ -467,5 +489,13 @@ function template_chooser($template)
   return $template;
 }
 add_filter('template_include', 'template_chooser');
+
+// remove pager on archive pages
+function no_nopaging($query) {
+    if (is_post_type_archive()) {
+        $query->set('nopaging', 1);
+    }
+}
+add_action('parse_query', 'no_nopaging');
 
 ?>
