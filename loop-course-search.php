@@ -58,9 +58,7 @@ while ( have_posts() ) :
       </div>
 
       <div class="entry-content">
-        <?php if( the_excerpt())  {
-          the_content();
-        } ?>
+        <?php the_content(); ?>
         <div class="entry-meta">
           <?php if( 'courses' == get_post_type()) : ?>
             <?php manoa2018_categories(); ?>
