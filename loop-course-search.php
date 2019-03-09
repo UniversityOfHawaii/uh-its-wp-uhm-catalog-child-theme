@@ -37,15 +37,6 @@ while ( have_posts() ) :
         <h2 class="entry-title">
           <a href="<?php the_permalink(); ?>" rel="bookmark">
             <?php the_title(); ?>
-            <?php //manoa2018_posted_on(); ?>
-            <?php
-            if(basename(get_page_template()) === 'page-academic-group.php') {
-              foreach (get_the_category() as $category){
-                echo "<span> | ";
-                echo $category->name;
-                echo "</span>";
-              }
-            } ?>
           </a>
         </h2>
           <?php $dtags = get_the_term_list('','gened-tags','','');
