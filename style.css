@@ -88,7 +88,12 @@ body header {
 }
 
 #header_mid {
-  padding: 30px 0 20px;
+  padding-top: 8px;
+}
+@media only screen and (min-width: 761px) {
+  #header_mid {
+    height: 110px;
+  }
 }
 
 .site-name-description {
@@ -157,11 +162,18 @@ body header {
 
 @media only screen and (max-width: 760px) {
   #header_sitename {
-    font-size: 1.2em;
+    font-size: 1.4em;
+  }
+  a.site-name-description {
+    display: flex;
+    justify-content: center;
   }
   .site-name-description .image {
     margin-right: 10px;
     width: 50px;
+  }
+  #header_btm_content {
+    text-align: left;
   }
 }
 

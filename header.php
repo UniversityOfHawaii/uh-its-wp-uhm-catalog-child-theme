@@ -97,13 +97,14 @@ if ( ( $paged >= 2 || $page >= 2 ) && ! is_404() ) {
           <div class="site-title"><?php bloginfo( 'name' ); ?></div>
         </h1>
       </a>
-      <?php get_search_form(); ?>
-      <?php //get_template_part('searchform', 'desktop'); ?>
     </div>
   </div>
   <nav id="header_btm">
-    <button class="menu-toggle" aria-expanded="false">Menu <span class="screen-reader-text">Open Mobile Menu</span></button>
-
+    <a class="menu-toggle" aria-expanded="false">Menu <span class="screen-reader-text">Open Mobile Menu</span></a>
+    <a class="search-mobile" href="#" class="dropdown-toggle">Search <span class="fa fa-search" aria-hidden="true"></span></a>
+    <div class="search-form-container">
+      <?php get_search_form(); ?>
+    </div>
     <?php if ( has_nav_menu( 'primary' ) ) : ?>
 
       <div id="header_btm_content">
