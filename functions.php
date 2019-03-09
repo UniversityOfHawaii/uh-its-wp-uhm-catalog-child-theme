@@ -131,21 +131,13 @@ function uhm_catalog_create_custom_post_types()
       'has_archive'   => true,
       'rewrite'       => array('slug' => 'courses'),
       'show_in_rest'  => true,
-      'taxonomies'    => array('category', 'academic-groups','gened-tags' ),
+      'taxonomies'    => array('category', 'tags', 'gened-tags' ),
       'supports'      => array('title', 'editor', 'author', 'revisions','page-attributes'),
       'menu_icon'     => 'dashicons-book-alt',
     )
   );
 }
 add_action('init','uhm_catalog_create_custom_post_types');
-
-// add units & courses posts to category archive pages
-function add_category_set_post_types( $query ){
-    if( ($query->is_category() | $query->is_tag()) && $query->is_main_query() ){
-        $query->set( 'post_type', array( 'post', 'units', 'courses' ) );
-    }
-}
-add_action( 'pre_get_posts', 'add_category_set_post_types' );
 
 // add section to customizer
 function uhm_catalog_customize_register( $wp_customize ) {
@@ -204,12 +196,6 @@ global $wp_customize;
     $wp_customize->remove_control( 'display_home_widget' );
 }
 add_action( 'customize_register', 'my_customize_register', 11 );
-
-// Add categories to pages
-function uhm_catalog_page_categories() {
-    register_taxonomy_for_object_type('category', 'page');
-}
-add_action( 'init', 'uhm_catalog_page_categories' );
 
 // remove taxonomy label from get archive title function
 add_filter( 'get_the_archive_title', function ($title) {
@@ -273,6 +259,10 @@ function manoa2018_get_breadcrumbs() {
             echo '<li class="item-posts">Tags</li>';
             echo '<li class="separator"> ' . $separator . ' </li>';
             echo '<li class="item-current item-archive" aria-current="page"><span class="bread-current bread-archive">' . single_term_title() . '</span></li>';
+
+        } elseif ( is_post_type_archive('courses') ) {
+
+            echo '<li class="item-current item-archive" aria-current="page"><span class="bread-current bread-archive">Course Search Results</span></li>';
 
         } elseif ( is_archive() ) {
 
@@ -445,11 +435,9 @@ function custom_get_user_posts_where() {
 
 }
 
-
 add_filter( 'posts_groupby', 'custom_posts_groupby', 10, 2 );
 /**
  * Callback for WordPress 'posts_groupby' filter.
- *
  * Set the GROUP BY clause to post IDs.
  *
  * @global $wpdb https://codex.wordpress.org/Class_Reference/wpdb
@@ -460,15 +448,24 @@ add_filter( 'posts_groupby', 'custom_posts_groupby', 10, 2 );
  * @return string The GROUPBY clause.
  */
 function custom_posts_groupby( $groupby, $query ) {
-
     global $wpdb;
-
     if ( is_main_query() && is_search() ) {
         $groupby = "{$wpdb->posts}.ID";
     }
-
     return $groupby;
-
 }
+
+// set archive-courses as template for courses search results
+function template_chooser($template)
+{
+  global $wp_query;
+  $post_type = get_query_var('post_type');
+  if( $wp_query->is_search && $post_type == 'courses' )
+  {
+    return locate_template('archive-courses.php');
+  }
+  return $template;
+}
+add_filter('template_include', 'template_chooser');
 
 ?>

@@ -141,8 +141,11 @@ if ( ( $paged >= 2 || $page >= 2 ) && ! is_404() ) {
     <div class="container">
       <?php manoa2018_get_breadcrumbs(); ?>
       <h1 class="entry-title">
-        <?php if( is_search() ) { ?>
+        <?php if ( is_post_type_archive('courses') ) { ?>
+          <?php printf( __( 'Search Courses for: %s', 'manoa2018' ), '<span>' . get_search_query() . '</span>' ); ?>
+        <?php } elseif( is_search() ) { ?>
           <?php printf( __( 'Search Results for: %s', 'manoa2018' ), '<span>' . get_search_query() . '</span>' ); ?>
+
         <?php } elseif( is_archive() ) { ?>
           <?php echo get_the_archive_title(); ?>
           <?php //echo single_term_title(); ?>

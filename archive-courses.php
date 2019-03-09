@@ -8,33 +8,20 @@ get_header(); ?>
   <main id="main_area" class="full-width">
     <div id="main_content">
 
-      <?php
-      if ( have_posts() ) {
-        the_post();
-      }
-      ?>
+
         <div id="container">
           <div id="content" role="main">
 
-            <?php if(category_description()) {
-              echo category_description();
-            } ?>
-
-              <?php
-                /*
-                 * Since we called the_post() above, we need to
-                 * rewind the loop back to the beginning that way
-                 * we can run the loop properly, in full.
-                 */
-                rewind_posts();
-
-                /*
-                 * Run the loop for the archives page to output the posts.
-                 * If you want to overload this in a child theme then include a file
-                 * called loop-archive.php and that will be used instead.
-                 */
-                get_template_part( 'loop', 'courses' );
-              ?>
+              <?php if ( have_posts() ) : ?>
+                <?php get_template_part( 'loop', 'course-search' ); ?>
+              <?php else : ?>
+                <div id="post-0" class="post no-results not-found">
+                  <h2 class="entry-title"><?php _e( 'No Courses Found', 'uhm_catalog' ); ?></h2>
+                  <div class="entry-content">
+                    <p><?php _e( 'Sorry, but no courses matched your search criteria. Please try again with some different keywords.', 'uhm_catalog' ); ?></p>
+                  </div><!-- .entry-content -->
+                </div><!-- #post-0 -->
+              <?php endif; ?>
 
           </div><!-- #content -->
         </div><!-- #container -->
