@@ -498,4 +498,10 @@ function no_nopaging($query) {
 }
 add_action('parse_query', 'no_nopaging');
 
+// add categories to pages
+/*function add_categories_to_pages() {
+    register_taxonomy_for_object_type('category', 'page');
+}
+add_action( 'init', 'add_categories_to_pages' );*/
+
 ?>

@@ -36,13 +36,19 @@ while ( have_posts() ) :
             <?php the_title(); ?>
             <?php //manoa2018_posted_on(); ?>
             <?php
-            if(basename(get_page_template()) === 'page-academic-group.php') {
+            /*if(basename(get_page_template()) === 'page-academic-group.php') {
               foreach (get_the_category() as $category){
                 echo "<span> | ";
                 echo $category->name;
                 echo "</span>";
               }
-            } ?>
+            }*/ ?>
+            <span class="parent-title">
+            <?php
+            global $post;
+            $direct_parent = $post->post_parent;
+            ?>
+            <?php echo get_the_title($direct_parent); ?></span>
           </a>
           <small> <?php echo get_post_type(); ?></small>
         </h2>

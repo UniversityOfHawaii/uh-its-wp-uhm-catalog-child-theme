@@ -5,10 +5,12 @@ Template Name: Academic Group Main
  * A custom page template for pages with the sidebar on the left.
  *
  */
+get_header();
+$children = get_pages( array( 'child_of' => $post->ID ) );
+?>
 
-get_header(); ?>
-
-  <main id="main_area" class="left-sidebar">
+  <main id="main_area" class="<?php if( count( $children ) == 0 ) {
+        echo 'full-width'; } else { echo 'left-sidebar'; } ?>">
     <div id="main_content">
 
       <?php
@@ -20,5 +22,5 @@ get_header(); ?>
       get_template_part( 'loop', 'academic-group-main' );
       ?>
 
-<?php get_sidebar(); ?>
+<?php if( count( $children ) == 0 ) { } else { get_sidebar(); } ?>
 <?php get_footer(); ?>
