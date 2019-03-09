@@ -133,12 +133,24 @@ body header {
 .site-name-description h1 > .uhm-title {
   font-size: .7em;
   position: relative;
-  white-space: nowrap;
+}
+
+@media only screen and (min-width: 761px) {
+  .site-name-description h1 > .uhm-title {
+    white-space: nowrap;
+  }
 }
 
 .site-name-description h1 > .uhm-title .manoa {
   display: inline-block;
   padding-left: 10px;
+}
+
+@media only screen and (max-width: 320px) {
+  .site-name-description h1 > .uhm-title .manoa {
+    display: block;
+    padding-left: 0;
+  }
 }
 
 .site-name-description h1 > .site-title {
