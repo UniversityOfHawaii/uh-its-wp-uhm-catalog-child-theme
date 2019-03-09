@@ -168,7 +168,7 @@ if ( ( $paged >= 2 || $page >= 2 ) && ! is_404() ) {
       <?php if ( is_post_type_archive('courses') ) { ?>
         <?php get_template_part('searchform', 'courses'); ?>
       <?php } ?>
-      <?php if( is_search() ) { ?>
+      <?php if( is_search() && !(is_post_type_archive('courses')) ) { ?>
         <a class="search-courses-link" href="<?php echo get_home_url(); ?>/courses">Search courses only</a>
       <?php } ?>
     </div>
