@@ -252,7 +252,7 @@ function manoa2018_get_breadcrumbs() {
 
             echo '<li class="item-posts"><a href="'. get_permalink( get_page_by_path('courses-overview') ) .'>Courses Overview</a></li>';
             echo '<li class="separator"> ' . $separator . ' </li>';
-            echo '<li class="item-posts"><a href="'. get_permalink( get_page_by_path('general-education') ) .'>General Education Courses</a></li>';
+            echo '<li class="item-posts"><a href="'. get_permalink( get_page_by_path('general-education') ) .'">General Education Courses</a></li>';
             echo '<li class="separator"> ' . $separator . ' </li>';
             echo '<li class="item-current item-archive" aria-current="page"><span class="bread-current bread-archive">' . single_term_title() . '</span></li>';
 
