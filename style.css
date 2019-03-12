@@ -151,6 +151,9 @@ body header {
     display: block;
     padding-left: 0;
   }
+  .site-name-description .image {
+    align-self: flex-start;
+  }
 }
 
 .site-name-description h1 > .site-title {

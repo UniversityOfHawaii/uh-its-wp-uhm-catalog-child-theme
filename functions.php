@@ -229,7 +229,6 @@ function manoa2018_get_breadcrumbs() {
 
     // Do not display on the homepage
     if ( !is_front_page() ) {
-
         // Build the breadcrums
         echo '<nav aria-label="Breadcrumb" id="' . $breadcrums_id . '">';
         echo '<ol class="' . $breadcrums_class . '">';
@@ -237,41 +236,31 @@ function manoa2018_get_breadcrumbs() {
         // Home page
         echo '<li class="item-home"><a class="bread-link bread-home" href="' . get_home_url() . '" title="' . $home_title . '">' . $home_title . '</a></li>';
         echo '<li class="separator separator-home"> ' . $separator . ' </li>';
-
         if ( is_home() ) {
-
             echo '<li class="item-current item-posts" aria-current="page"><span class="bread-current bread-posts">' . single_post_title() . '</span></li>';
 
         } elseif ( is_category() ) {
-
             echo '<li class="item-posts"><a class="bread-link" href="' . get_permalink( get_page_by_title( 'Courses Overview' ) ) . '">Courses</a></li>';
             echo '<li class="separator"> ' . $separator . ' </li>';
             echo '<li class="item-current item-archive" aria-current="page"><span class="bread-current bread-archive">' . get_the_archive_title() . '</span></li>';
-
         } elseif ( is_tax('gened-tags') ) {
-
             echo '<li class="item-posts"><a href="'. get_permalink( get_page_by_path('courses-overview') ) .'">Courses Overview</a></li>';
             echo '<li class="separator"> ' . $separator . ' </li>';
             echo '<li class="item-posts"><a href="'. get_permalink( get_page_by_path('general-education') ) .'">General Education Courses</a></li>';
             echo '<li class="separator"> ' . $separator . ' </li>';
             echo '<li class="item-current item-archive" aria-current="page"><span class="bread-current bread-archive">' . single_term_title() . '</span></li>';
-
         } elseif ( is_tag() ) {
-
             echo '<li class="item-posts">Tags</li>';
             echo '<li class="separator"> ' . $separator . ' </li>';
             echo '<li class="item-current item-archive" aria-current="page"><span class="bread-current bread-archive">' . single_term_title() . '</span></li>';
 
         } elseif ( is_post_type_archive('courses') ) {
-
             echo '<li class="item-current item-archive" aria-current="page"><span class="bread-current bread-archive">Course Search</span></li>';
 
         } elseif ( is_archive() ) {
-
             echo '<li class="item-current item-archive" aria-current="page"><span class="bread-current bread-archive">' . get_the_archive_title() . '</span></li>';
 
         } elseif ( is_singular('courses') ) {
-
             $posts_page = get_option( 'page_for_posts', true );
             $our_title = get_the_title( $posts_page );
             $posts_url = get_permalink( $posts_page );
@@ -280,65 +269,47 @@ function manoa2018_get_breadcrumbs() {
             echo '<li class="item-posts"><a href="'. get_home_url() .'/courses">' . esc_html($posts_type->label) . '</a></li>';
             echo '<li class="separator"> ' . $separator . ' </li>';
             echo '<li class="item-current item-post" aria-current="page"><span class="bread-current bread-post">' . get_the_title() . '</span></li>';
-
         } elseif ( is_single() ) {
-
             $posts_page = get_option( 'page_for_posts', true );
             $our_title = get_the_title( $posts_page );
             $posts_url = get_permalink( $posts_page );
             $posts_type = get_post_type_object(get_post_type());
-
             //echo '<li class="item-posts"><a class="bread-posts" href="' .$posts_url. '">' . $our_title . '</a></li>';
             echo '<li class="item-posts">' . esc_html($posts_type->label) . '</li>';
             echo '<li class="separator"> ' . $separator . ' </li>';
             echo '<li class="item-current item-post" aria-current="page"><span class="bread-current bread-post">' . get_the_title() . '</span></li>';
-
         } elseif ( is_page() ) {
-
             // Standard page
             if( $post->post_parent ){
-
                 // If child page, get parents
                 $anc = get_post_ancestors( $post->ID );
-
                 // Get parents in the right order
                 $anc = array_reverse($anc);
-
                 // Parent page loop
                 foreach ( $anc as $ancestor ) {
                     echo '<li class="item-parent item-parent-' . $ancestor . '"><a class="bread-parent bread-parent-' . $ancestor . '" href="' . get_permalink($ancestor) . '" title="' . get_the_title($ancestor) . '">' . get_the_title($ancestor) . '</a></li>';
                     echo '<li class="separator separator-' . $ancestor . '"> ' . $separator . ' </li>';
                 }
-
                 // Current page
                 echo '<li class="item-current item-page" aria-current="page"><span class="bread-current bread-page"> ' . get_the_title() . '</span></li>';
-
             } else {
-
                 // Just display current page if not parents
                 echo '<li class="item-current item-page" aria-current="page"><span class="bread-current bread-page"> ' . get_the_title() . '</span></li>';
-
             }
-
         } else if ( get_query_var('paged') ) {
-
             // Paginated archives
             echo '<li class="item-current item-current-' . get_query_var('paged') . '" aria-current="page"><span class="bread-current bread-current-' . get_query_var('paged') . '" title="Page ' . get_query_var('paged') . '">'.__('Page') . ' ' . get_query_var('paged') . '</span></li>';
 
         } else if ( is_search() ) {
-
             // Search results page
             echo '<li class="item-current item-current-' . get_search_query() . '" aria-current="page"><span class="bread-current bread-current-' . get_search_query() . '" title="Search results for: ' . get_search_query() . '">Search results for: ' . get_search_query() . '</span></li>';
 
         } elseif ( is_404() ) {
-
             // 404 page
             echo '<li aria-current="page">' . 'Error 404' . '</li>';
         }
-
         echo '</ol>';
         echo '</nav>';
-
     }
 }
 endif;
@@ -357,11 +328,8 @@ add_filter( 'posts_join', 'custom_posts_join', 10, 2 );
  * @return string $join The sql JOIN clause.
  */
 function custom_posts_join( $join, $query ) {
-
     global $wpdb;
-
     if ( is_main_query() && is_search() ) {
-
         $join .= "
         LEFT JOIN
         (
@@ -372,11 +340,8 @@ function custom_posts_join( $join, $query ) {
                 {$wpdb->terms} ON {$wpdb->terms}.term_id = {$wpdb->term_taxonomy}.term_id
         )
         ON {$wpdb->posts}.ID = {$wpdb->term_relationships}.object_id ";
-
     }
-
     return $join;
-
 }
 
 add_filter( 'posts_where', 'custom_posts_where', 10, 2 );
@@ -395,25 +360,18 @@ add_filter( 'posts_where', 'custom_posts_where', 10, 2 );
  * @return string The where clause.
  */
 function custom_posts_where( $where, $query ) {
-
     global $wpdb;
-
     if ( is_main_query() && is_search() ) {
-
         // get additional where clause for the user
         $user_where = custom_get_user_posts_where();
-
         $where .= " OR (
             {$wpdb->term_taxonomy}.taxonomy IN( 'category', 'post_tag', 'gened-tags' )
             AND
             {$wpdb->terms}.name LIKE '%" . esc_sql( get_query_var( 's' ) ) . "%'
             {$user_where}
         )";
-
     }
-
     return $where;
-
 }
 
 /**
@@ -427,25 +385,16 @@ function custom_posts_where( $where, $query ) {
  * @return string The user where clause.
  */
 function custom_get_user_posts_where() {
-
-    global $wpdb;
-
-    $user_id = get_current_user_id();
-    $sql     = '';
-    $status  = array( "'publish'" );
-
-    if ( $user_id ) {
-
-        $status[] = "'private'";
-
-        $sql .= " AND {$wpdb->posts}.post_author = {$user_id}";
-
-    }
-
-    $sql .= " AND {$wpdb->posts}.post_status IN( " . implode( ',', $status ) . " ) ";
-
-    return $sql;
-
+  global $wpdb;
+  $user_id = get_current_user_id();
+  $sql     = '';
+  $status  = array( "'publish'" );
+  if ( $user_id ) {
+    $status[] = "'private'";
+    $sql .= " AND {$wpdb->posts}.post_author = {$user_id}";
+  }
+  $sql .= " AND {$wpdb->posts}.post_status IN( " . implode( ',', $status ) . " ) ";
+  return $sql;
 }
 
 add_filter( 'posts_groupby', 'custom_posts_groupby', 10, 2 );
@@ -461,18 +410,18 @@ add_filter( 'posts_groupby', 'custom_posts_groupby', 10, 2 );
  * @return string The GROUPBY clause.
  */
 function custom_posts_groupby( $groupby, $query ) {
-    global $wpdb;
-    if ( is_main_query() && is_search() ) {
-        $groupby = "{$wpdb->posts}.ID";
-    }
-    return $groupby;
+  global $wpdb;
+  if ( is_main_query() && is_search() ) {
+    $groupby = "{$wpdb->posts}.ID";
+  }
+  return $groupby;
 }
 
 // add courses to category archive pages
 function add_category_set_post_types( $query ){
-    if( ($query->is_category() | $query->is_tag()) && $query->is_main_query() ){
-        $query->set( 'post_type', 'courses' );
-    }
+  if( ($query->is_category() | $query->is_tag()) && $query->is_main_query() ){
+      $query->set( 'post_type', 'courses' );
+  }
 }
 add_action( 'pre_get_posts', 'add_category_set_post_types' );
 
@@ -492,9 +441,9 @@ add_filter('template_include', 'template_chooser');
 
 // remove pager on archive pages
 function no_nopaging($query) {
-    if (is_post_type_archive()) {
-        $query->set('nopaging', 1);
-    }
+  if (is_archive(array('category','gened-tags','tags'))) {
+      $query->set('nopaging', 1);
+  }
 }
 add_action('parse_query', 'no_nopaging');
 
