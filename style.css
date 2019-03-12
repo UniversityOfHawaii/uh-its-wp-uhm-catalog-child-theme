@@ -580,6 +580,7 @@ ul.child-pages a:active {
   font-size: .75em;
   font-weight: 600;
   padding: 1px 6px;
+  text-align: center;
   text-decoration: none;
 }
 .dtags a:hover,
@@ -593,7 +594,11 @@ ul.child-pages a:active {
   margin-left: 4px;
 }
 
-@media only screen and (min-width: 761px) {
+.page-template-page-course-listing .dtags {
+  display: flex;
+  flex-wrap: wrap;
+}
+@media only screen and (max-width: 760px) {
   .page-template-page-course-listing .dtags {
     display: flex;
     flex-wrap: wrap;
@@ -602,7 +607,6 @@ ul.child-pages a:active {
     flex-basis: 40%;
     font-size: 1em;
     padding: 10px;
-    text-align: center;
   }
 }
 .entry-content .course-tags {
