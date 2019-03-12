@@ -10,7 +10,7 @@ $children = get_pages( array( 'child_of' => $post->ID ) );
 ?>
 
   <main id="main_area" class="<?php if( count( $children ) == 0 ) {
-        echo 'full-width'; } else { echo 'left-sidebar'; } ?>">
+        echo 'one-column'; } else { echo 'left-sidebar'; } ?>">
     <div id="main_content">
 
       <?php
