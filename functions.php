@@ -131,7 +131,7 @@ function uhm_catalog_create_custom_post_types()
       'has_archive'   => true,
       'rewrite'       => array('slug' => 'courses'),
       'show_in_rest'  => true,
-      'taxonomies'    => array('category', 'tags', 'gened-tags' ),
+      'taxonomies'    => array('category', 'post_tag', 'gened-tags' ),
       'supports'      => array('title', 'editor', 'author', 'revisions','page-attributes'),
       'menu_icon'     => 'dashicons-book-alt',
     )
