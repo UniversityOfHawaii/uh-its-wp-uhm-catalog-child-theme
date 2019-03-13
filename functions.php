@@ -132,7 +132,7 @@ function uhm_catalog_create_custom_post_types()
       'rewrite'       => array('slug' => 'courses'),
       'show_in_rest'  => true,
       'taxonomies'    => array('category', 'post_tag', 'gened-tags' ),
-      'supports'      => array('title', 'editor', 'author', 'revisions','page-attributes'),
+      'supports'      => array('title', 'editor', 'author', 'revisions'),
       'menu_icon'     => 'dashicons-book-alt',
     )
   );
@@ -419,11 +419,13 @@ function custom_posts_groupby( $groupby, $query ) {
 
 // add courses to category archive pages
 function add_category_set_post_types( $query ){
-  if( ($query->is_category() | $query->is_tag()) && $query->is_main_query() ){
+  if( (is_category() || is_tax('gened-tags') || is_tag()) && $query->is_main_query() ){
       $query->set( 'post_type', 'courses' );
+      $query->set( 'order', 'ASC' );
+      $query->set( 'orderby', 'title' );
   }
 }
-add_action( 'pre_get_posts', 'add_category_set_post_types' );
+add_action( 'pre_get_posts', 'add_category_set_post_types', 30 );
 
 
 // set archive-courses as template for courses search results
