@@ -6,8 +6,7 @@
 
 get_header(); ?>
   <main id="main_area" class="one-column">
-    <div id="main_content">
-      <div id="container">
+    <div id="main_content" class="container">
         <div id="content" role="main">
 
           <?php
@@ -20,6 +19,5 @@ get_header(); ?>
           ?>
 
         </div><!-- #content -->
-      </div><!-- #container -->
 
 <?php get_footer(); ?>

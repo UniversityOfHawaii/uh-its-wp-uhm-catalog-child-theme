@@ -30,7 +30,7 @@ get_header(); ?>
         </div>
     <?php endif; ?>
     <div id="main_content" class="bootstrap">
-      <div id="container">
+      <div class="container">
         <div id="content" role="main">
 
           <?php if ( have_posts() ) {

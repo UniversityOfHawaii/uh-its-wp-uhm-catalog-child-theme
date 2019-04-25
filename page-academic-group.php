@@ -9,16 +9,26 @@ Template Name: Academic Group
 get_header(); ?>
 
   <main id="main_area" class="left-sidebar">
-    <div id="main_content">
+    <div id="main_content" class="container">
 
-      <?php
-      /*
-       * Run the loop to output the page.
-       * If you want to overload this in a child theme then include a file
-       * called loop-page.php and that will be used instead.
-       */
-      get_template_part( 'loop', 'academic-group' );
-      ?>
+      <div class="row">
 
-<?php get_sidebar(); ?>
+        <div class="col-lg-3 col-md-4">
+          <?php get_sidebar(); ?>
+        </div>
+
+        <div class="col-lg-9 col-md-8">
+
+          <?php
+          /*
+           * Run the loop to output the page.
+           * If you want to overload this in a child theme then include a file
+           * called loop-page.php and that will be used instead.
+           */
+          get_template_part( 'loop', 'academic-group' );
+          ?>
+        </div>
+
+      </div>
+
 <?php get_footer(); ?>

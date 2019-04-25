@@ -70,17 +70,8 @@
   }
 }
 
-@media only screen and (min-width: 761px) {
-  .page-template-page-academic-group #container {
-    float: right;
-    margin: 0 0 0 -240px;
-  }
-  .page-template-page-academic-group #content {
-    margin: 0 0 0 280px;
-  }
-  .page-template-page-academic-group #primary {
-    float: left;
-  }
+#primary {
+  margin-top: 1.8rem;
 }
 
 body header {
@@ -89,6 +80,11 @@ body header {
 
 #header_mid {
   padding-top: 16px;
+}
+@media only screen and (max-width: 760px) {
+  #header_mid {
+    margin-top: 24px;
+  }
 }
 @media only screen and (min-width: 761px) {
   #header_mid {
@@ -245,6 +241,7 @@ nav#breadcrumbs
 }
 #department_name h1.entry-title {
   color: #fff;
+  font-weight: 600;
 }
 
 /* style page with anchors */
@@ -335,6 +332,10 @@ ul.homepage-widgets li {
   margin-bottom: 20px;
 }
 
+.homepage-widgets .widget-title {
+  text-align: center;
+}
+
 #schools-list {
   background: #e7e7e7;
   padding: 24px 0;
@@ -365,6 +366,13 @@ ul.homepage-widgets li {
 .academic-groups {
   text-align: center;
 }
+
+.academic-groups h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 1.5rem 0;
+}
+
 @media only screen and (min-width: 761px) {
   .schools-list ul {
     column-count: 3;
@@ -446,7 +454,7 @@ ul.child-pages a:active {
     padding: 0;
     font-size: 1.2em;
     font-weight: 600;
-    bottom: 3px;
+    bottom: 0;
     z-index: 10;
     width: 100%;
     line-height: 1.4;
