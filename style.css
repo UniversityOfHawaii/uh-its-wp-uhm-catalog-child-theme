@@ -733,3 +733,24 @@ ul.child-pages a:active {
 #department_name .search-courses-link:active {
   text-decoration: none;
 }
+
+table#course-requirements h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+table#course-requirements tr:first-child th {
+  border-bottom: 1px solid #e7e7e7;
+}
+table#course-requirements th {
+  font-size: .75rem;
+}
+table#course-requirements tr th:first-child {
+  border-bottom: 1px solid #e7e7e7;
+  border-right: 1px solid #e7e7e7;
+}
+table#course-requirements .fa-check {
+  color: #024731;
+}
+table#course-requirements .fa-times {
+  color: #888;
+}
