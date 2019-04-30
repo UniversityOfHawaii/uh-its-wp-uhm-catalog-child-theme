@@ -754,3 +754,11 @@ table#course-requirements .fa-check {
 table#course-requirements .fa-times {
   color: #888;
 }
+
+table.focus-requirements tr:first-child th {
+  border-bottom: 1px solid #e7e7e7;
+}
+
+table.focus-requirements tr:nth-child(2) th {
+  font-weight: 600;
+}
