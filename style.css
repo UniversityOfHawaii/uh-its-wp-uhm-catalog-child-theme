@@ -397,7 +397,7 @@ ul.homepage-widgets li {
   padding-left: 20px;
 }
 .page-template-page-children ul.child-pages > li {
-  white-space: nowrap;
+  /*white-space: nowrap;*/
 }
 ul.child-pages a {
   color: #333;
