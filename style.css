@@ -350,7 +350,7 @@ ul.homepage-widgets li {
   padding: 0;
 }
 .schools-list ul > li + li {
-  margin-top: 12px;
+  margin-top: 1.5rem;
 }
 .schools-list a {
   color: #333;
