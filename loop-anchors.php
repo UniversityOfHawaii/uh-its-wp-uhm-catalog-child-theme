@@ -38,7 +38,6 @@ if ( have_posts() ) {
           </div><!-- .entry-content -->
 
           <div class="anchors" aria-hidden="true">
-            <!--<h2>Sections</h2>-->
             <?php global $mwm_aal;
             echo $mwm_aal->output_content_links(); ?>
           </div>

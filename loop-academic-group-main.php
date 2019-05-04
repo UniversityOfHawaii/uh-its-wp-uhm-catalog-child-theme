@@ -39,6 +39,11 @@ if ( have_posts() ) {
               <?php edit_post_link( __( 'Edit', 'manoa2018' ), '<span class="edit-link">', '</span>' ); ?>
             </div><!-- .entry-content -->
 
+            <div class="anchors" aria-hidden="true">
+              <?php global $mwm_aal;
+              echo $mwm_aal->output_content_links(); ?>
+            </div>
+
           </div>
         </div><!-- #post-## -->
 

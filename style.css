@@ -23,17 +23,30 @@
 }
 
 .anchors {
-  margin: 0 0 2rem;
+  /*margin: 0 0 2rem;*/
 }
 
 .page-template-page-anchors #content {
   padding-top: 30px;
 }
 
+.anchor-links-container {
+  margin-bottom: 2rem;
+}
+
 .anchor-links-container ul {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+.anchor-links-container:before {
+  content: 'Sections';
+  display: block;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding-bottom: .5rem;
+  text-transform: uppercase;
 }
 
 #content .anchors .anchor-links-container > ul > li > ul {
@@ -58,14 +71,14 @@
 }
 
 @media only screen and (min-width: 761px) {
-  .anchor-links-container {
+  .anchor-links-container ul {
     column-count: 2;
     column-gap: 40px;
   }
-  .anchor-links-container.3-col {
+  .anchor-links-container.3-col ul {
     column-count: 3;
   }
-  .anchor-links-container.4-col {
+  .anchor-links-container.4-col ul {
     column-count: 3;
   }
 }
