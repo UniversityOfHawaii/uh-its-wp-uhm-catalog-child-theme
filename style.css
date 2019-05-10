@@ -357,10 +357,13 @@ ul.homepage-widgets li {
   line-height: 1.3;
   margin-bottom: 40px;
 }
-.schools-list ul {
+.schools-list > ul {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+.schools-list ul.children {
+  display: none;
 }
 .schools-list ul > li + li {
   margin-top: 1.5rem;
