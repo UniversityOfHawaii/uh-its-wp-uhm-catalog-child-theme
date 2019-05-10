@@ -61,14 +61,14 @@ if ( ( $paged >= 2 || $page >= 2 ) && ! is_404() ) {
   <div id="header_top">
     <div id="header_top_content">
       <ul id="header_mainmenu">
-        <li><a href="https://manoa.hawaii.edu/">UHM Home</a></li>
-        <li><a href="https://manoa.hawaii.edu/a-z/">A-Z Index</a></li>
-        <li><a href="https://manoa.hawaii.edu/directory/">Directory</a></li>
+        <li class="show-on-mobile"><a href="https://manoa.hawaii.edu/">UHM Home</a></li>
+        <li class="show-on-mobile"><a href="https://manoa.hawaii.edu/a-z/">A-Z Index</a></li>
+        <li class="show-on-mobile"><a href="https://manoa.hawaii.edu/directory/">Directory</a></li>
         <li><a href="https://manoa.hawaii.edu/students/">Students</a></li>
         <li><a href="https://manoa.hawaii.edu/faculty-staff/">Faculty and Staff</a></li>
         <li><a href="https://manoa.hawaii.edu/admissions/parents.html">Parents</a></li>
         <li><a href="https://uhalumni.org/manoa/">Alumni</a></li>
-        <li><a href="https://myuh.hawaii.edu/">MyUH</a></li>
+        <li class="show-on-mobile"><a href="https://myuh.hawaii.edu/">MyUH</a></li>
       </ul>
       <div id="header_smrow">
         <a href="https://twitter.com/UHManoa">
@@ -95,7 +95,7 @@ if ( ( $paged >= 2 || $page >= 2 ) && ! is_404() ) {
           <img id="header-seal" src="<?php echo get_stylesheet_directory_uri(); ?>/images/manoa-seal.png" srcset="<?php echo get_stylesheet_directory_uri(); ?>/images/manoa-seal.png 1x, <?php echo get_stylesheet_directory_uri(); ?>/images/manoa-seal-2x.png 2x" alt="University of Hawai&#699;i at M&#257;noa" />
         </div>
         <h1 id="header_sitename">
-          <div class="uhm-title"><span class="uh">University of Hawai&#8216;i</span><span class="registered-trademark">&reg;</span> <span class="manoa">at Manoa</span></div>
+          <div class="uhm-title"><span class="uh">University of Hawai&#8216;i</span><span class="registered-trademark">&reg;</span> <span class="manoa">at Mānoa</span></div>
           <div class="site-title"><?php bloginfo( 'name' ); ?></div>
         </h1>
       </a>

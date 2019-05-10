@@ -67,7 +67,6 @@ get_header(); ?>
               'orderby' => 'meta_value',
               'order' => 'ASC',
               'echo' => '1',
-              'depth' => '1',
               'sort_column' => 'menu_order',
               'title_li' => '',
               'menu_class' => 'schools-list'
