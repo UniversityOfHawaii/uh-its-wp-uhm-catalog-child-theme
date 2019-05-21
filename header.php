@@ -101,7 +101,7 @@ if ( ( $paged >= 2 || $page >= 2 ) && ! is_404() ) {
       </a>
     </div>
   </div>
-  <nav id="header_btm">
+  <nav id="header_btm" role="navigation" aria-label="main navigation">
     <div class="container">
       <a class="menu-toggle" aria-expanded="false">Menu <span class="screen-reader-text">Open Mobile Menu</span></a>
       <a class="search-mobile" href="#" class="dropdown-toggle">Search <span class="fa fa-search" aria-hidden="true"></span></a>
