@@ -70,6 +70,18 @@
   margin: 1rem 0;
 }
 
+.page .entry-content > ul,
+.page .entry-content > ol {
+  padding-left: 1rem;
+}
+
+.page .entry-content > ul ul,
+.page .entry-content > ul ol,
+.page .entry-content > ol ol,
+.page .entry-content > ol ul {
+  padding-left: 0;
+}
+
 @media only screen and (min-width: 761px) {
   .anchor-links-container ul {
     column-count: 2;
@@ -347,6 +359,11 @@ ul.homepage-widgets li {
 
 .homepage-widgets .widget-title {
   text-align: center;
+}
+
+h3.widget-title {
+  font-size: 1.1rem;
+  font-weight: 700;
 }
 
 #schools-list {
