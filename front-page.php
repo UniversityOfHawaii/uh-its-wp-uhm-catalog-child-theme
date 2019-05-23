@@ -6,29 +6,28 @@
 get_header(); ?>
 
   <main id="main_area">
-    <?php if(has_post_thumbnail()): ?>
-        <div class="featured-image">
-          <?php if (get_theme_mod('home_banner') !='') : ?>
-            <img src="<?php echo get_theme_mod('home_banner'); ?>" alt="UH students">
-          <?php endif; ?>
-          <div class="featured-links">
-            <div class="container">
-              <div class="left-link">
-                <a href="<?php echo get_theme_mod('home-link-1-url'); ?>" title="go to <?php echo get_theme_mod('home-link-1'); ?>">
-                  <?php echo get_theme_mod('home-link-1'); ?>
-                  <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                </a>
-              </div>
-              <div class="right-link">
-                <a href="<?php echo get_theme_mod('home-link-2-url'); ?>" title="go to <?php echo get_theme_mod('home-link-2'); ?>">
-                  <?php echo get_theme_mod('home-link-2'); ?>
-                  <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                </a>
-              </div>
-            </div>
+
+    <div class="featured-image">
+      <?php if (get_theme_mod('home_banner') !='') : ?>
+        <img src="<?php echo get_theme_mod('home_banner'); ?>" alt="UH students">
+      <?php endif; ?>
+      <div class="featured-links">
+        <div class="container">
+          <div class="left-link">
+            <a href="<?php echo get_theme_mod('home-link-1-url'); ?>" title="go to <?php echo get_theme_mod('home-link-1'); ?>">
+              <?php echo get_theme_mod('home-link-1'); ?>
+              <i class="fa fa-arrow-right" aria-hidden="true"></i>
+            </a>
+          </div>
+          <div class="right-link">
+            <a href="<?php echo get_theme_mod('home-link-2-url'); ?>" title="go to <?php echo get_theme_mod('home-link-2'); ?>">
+              <?php echo get_theme_mod('home-link-2'); ?>
+              <i class="fa fa-arrow-right" aria-hidden="true"></i>
+            </a>
           </div>
         </div>
-    <?php endif; ?>
+      </div>
+    </div>
     <div id="main_content" class="bootstrap">
       <div class="container">
         <div id="content" role="main">
