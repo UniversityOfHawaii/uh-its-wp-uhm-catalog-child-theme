@@ -12,12 +12,13 @@ $children = get_pages( array( 'child_of' => $post->ID ) );
   <main id="main_area" class="<?php if( count( $children ) == 0 ) {
         echo 'one-column'; } else { echo 'left-sidebar'; } ?>">
     <div id="main_content" class="container">
-      <div class="row">
+
 
         <?php if( count( $children ) == 0 ) { } else { ; ?>
-          <div class="col-lg-3 col-md-4">
-            <?php get_sidebar(); ?>
-          </div>
+          <div class="row">
+            <div class="col-lg-3 col-md-4">
+              <?php get_sidebar(); ?>
+            </div>
         <?php } ?>
 
         <?php if( count( $children ) == 0 ) { } else { ; ?>
@@ -32,7 +33,7 @@ $children = get_pages( array( 'child_of' => $post->ID ) );
           get_template_part( 'loop', 'academic-group-main' );
           ?>
         <?php if( count( $children ) == 0 ) { } else { ; ?></div>
+          </div>
         <?php } ?>
-      </div>
 
 <?php get_footer(); ?>
