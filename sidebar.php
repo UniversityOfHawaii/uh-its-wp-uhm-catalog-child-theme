@@ -16,6 +16,15 @@
     }
     if ( $kiddies ) {
       echo '<ul class="secondary">';
+        if(is_page_template('page-academic-group-main.php')) { ?>
+          <li class="school-parent current_page_item"><a href="#content"><?php the_title(); ?> <span class="fa fa-chevron-left" aria-hidden="true"></a></li>
+        <?php }
+        if(is_page_template('page-academic-group.php')) {
+          global $post;
+          $direct_parent_url = get_permalink($post->post_parent);
+          $direct_parent_title = get_the_title($post->post_parent); ?>
+          <li class="school-parent"><a href="<?php echo $direct_parent_url; ?>"><?php echo $direct_parent_title; ?> <span class="fa fa-chevron-left" aria-hidden="true"></a></li>
+        <?php }
         echo $kiddies;
       echo '</ul>';
     } ?>

@@ -332,6 +332,13 @@ nav#breadcrumbs
 .page-template-page-academic-group #primary .secondary ul.children {
     display: block;
 }
+#primary .secondary li.school-parent a {
+  font-weight: 600;
+}
+#primary .secondary li.school-parent a[href='#content'] {
+  pointer-events: none;
+  cursor: default;
+}
 .single #nav-below {
   border-top: 0;
 }
