@@ -28,7 +28,28 @@ get_header(); ?>
         </div>
       </div>
     </div>
-    <div id="main_content" class="bootstrap">
+    <div id="schools-list" class="full-width-section">
+      <div class="container">
+
+        <div class="academic-groups">
+          <h2>Colleges, Schools &amp; Academic Units</h2>
+          <?php
+          $schools = array(
+              'meta_key' => '_wp_page_template',
+              'meta_value' => 'page-academic-group-main.php',
+              'orderby' => 'meta_value',
+              'order' => 'ASC',
+              'echo' => '1',
+              'sort_column' => 'menu_order',
+              'title_li' => '',
+              'menu_class' => 'schools-list'
+          ); ?>
+          <?php wp_page_menu( $schools ); ?>
+        </div>
+      </div>
+
+    </div><!-- section -->
+    <div id="main_content">
       <div class="container">
         <div id="content" role="main">
 
@@ -53,27 +74,5 @@ get_header(); ?>
         </div><!-- #content -->
       </div>
     </div>
-
-    <div id="schools-list" class="full-width-section">
-      <div class="container">
-
-        <div class="academic-groups">
-          <h2>Colleges, Schools &amp; Academic Units</h2>
-          <?php
-          $schools = array(
-              'meta_key' => '_wp_page_template',
-              'meta_value' => 'page-academic-group-main.php',
-              'orderby' => 'meta_value',
-              'order' => 'ASC',
-              'echo' => '1',
-              'sort_column' => 'menu_order',
-              'title_li' => '',
-              'menu_class' => 'schools-list'
-          ); ?>
-          <?php wp_page_menu( $schools ); ?>
-        </div>
-      </div>
-
-    </div><!-- section -->
 
 <?php get_footer(); ?>

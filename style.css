@@ -349,6 +349,10 @@ nav#breadcrumbs
   border-top: 0;
 }
 
+.home #main_content .container {
+  border-bottom: 1px solid #e7e7e7;
+}
+
 #content ul.homepage-widgets li + li {
   margin-top: 0;
 }
