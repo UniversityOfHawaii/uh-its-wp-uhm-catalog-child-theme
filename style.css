@@ -26,6 +26,14 @@
   /*margin: 0 0 2rem;*/
 }
 
+.page-template-page-anchor #content {
+  padding-top: 0;
+}
+
+.page-template-page-anchor #content h1.entry-title {
+  display: none;
+}
+
 .page-template-page-anchors #content {
   padding-top: 30px;
 }
@@ -588,6 +596,7 @@ ul.child-pages a:active {
 }
 
 #content .courses-container h2.entry-title {
+  line-height: 1.3;
   margin-top: 0;
 }
 
